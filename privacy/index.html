@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — iFlipbook</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0b1020" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <style>
+    :root{
+      --bg:#060816; --bg-soft:#0b1020; --text:#eef2ff; --muted:#a7b0c5;
+      --line:rgba(255,255,255,.1); --accent:#22d3ee;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      color:var(--text); line-height:1.7;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(124,58,237,.22), transparent 30%),
+        radial-gradient(circle at 90% 0%, rgba(34,211,238,.16), transparent 26%),
+        linear-gradient(180deg,#050816,#0a1020);
+      -webkit-font-smoothing:antialiased;
+    }
+    .wrap{max-width:720px; margin:0 auto; padding:52px 20px 60px}
+    .brand{display:inline-flex; align-items:center; gap:11px; margin-bottom:30px; font-weight:700}
+    .brand img{width:34px; height:34px; border-radius:10px; display:block}
+    .brand a{color:var(--text); text-decoration:none}
+    .card{
+      border:1px solid var(--line); border-radius:22px; padding:36px 30px 28px;
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+    }
+    h1{margin:0 0 6px; font-size:2rem; letter-spacing:-.02em}
+    .eff{color:var(--muted); font-size:.9rem; margin:0 0 24px}
+    h2{font-size:1.1rem; margin:26px 0 8px}
+    p{margin:0 0 12px; color:#c7cee2}
+    a.inline{color:var(--accent); text-decoration:none}
+    a.inline:hover{text-decoration:underline}
+    hr{border:none; border-top:1px solid var(--line); margin:24px 0}
+    .back{display:inline-block; margin-top:22px; color:var(--muted); text-decoration:none; font-size:.9rem}
+    .back:hover{color:var(--text)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><a href="/"><img src="/assets/iflipbook-icon.png" alt="" /> iFlipbook</a></div>
+
+    <main class="card">
+      <h1>Privacy Policy</h1>
+      <p class="eff">Effective July 9, 2026</p>
+
+      <p>
+        iFlipbook is made by Swiftian Inc. We keep things simple: the app works
+        without an account, and we do not collect, sell, or share personal
+        information for advertising.
+      </p>
+
+      <h2>Your drawings</h2>
+      <p>
+        Your flipbooks and drawings are created and stored on your device. If you
+        enable iCloud, they may sync through your Apple ID using Apple&rsquo;s iCloud,
+        handled under Apple&rsquo;s
+        <a class="inline" href="https://www.apple.com/legal/privacy/">Privacy Policy</a>.
+        We don&rsquo;t have our own servers that store your artwork.
+      </p>
+
+      <h2>Sharing &amp; exporting</h2>
+      <p>
+        Exporting a video, GIF, or image, or sharing a project, happens only when
+        you choose to. Content leaves your device only through the share options you
+        pick.
+      </p>
+
+      <h2>What we don&rsquo;t do</h2>
+      <p>
+        We don&rsquo;t require personal details, and we don&rsquo;t embed third-party
+        advertising or cross-app tracking SDKs. Purchases, when offered, are handled
+        by Apple through the App Store.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        iFlipbook is family-friendly and does not knowingly collect personal
+        information from children.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        We may update this policy as the app evolves. Material changes will appear
+        here with a new effective date.
+      </p>
+
+      <hr>
+      <p>
+        Questions? <a class="inline email" data-u="hello" data-d="swiftian.com" href="#">Contact&nbsp;us</a>.
+      </p>
+    </main>
+
+    <a class="back" href="/">&larr; Back to iFlipbook</a>
+  </div>
+
+  <script>
+    document.querySelectorAll('a.email').forEach(function(a){
+      a.href = 'mailto:' + a.dataset.u + String.fromCharCode(64) + a.dataset.d;
+    });
+  </script>
+</body>
+</html>
