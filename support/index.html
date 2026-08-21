@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — iFlipbook</title>
+  <meta name="description" content="Get help with iFlipbook: contact the maker, answers to common questions, and how to reach us from inside the app." />
+  <meta name="theme-color" content="#060816" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <style>
+    :root {
+      --text: #eef2ff; --muted: #a7b0c5; --faint: #6f7994;
+      --line: rgba(255,255,255,0.1); --panel: rgba(255,255,255,0.045);
+      --accent-2: #22d3ee;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text); line-height: 1.68;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(124,58,237,0.22), transparent 30%),
+        radial-gradient(circle at 88% 6%, rgba(34,211,238,0.16), transparent 26%),
+        linear-gradient(180deg, #050816 0%, #080c1c 60%, #05070f 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(760px, calc(100% - 36px)); margin: 0 auto; }
+    .nav { border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(6,8,22,0.7); backdrop-filter: blur(12px); }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 700; text-decoration: none; }
+    .brand img { width: 32px; height: 32px; border-radius: 9px; }
+    .nav a.plain { color: var(--muted); text-decoration: none; font-size: 0.92rem; }
+    .nav a.plain:hover { color: var(--text); }
+    h1 { font-size: clamp(2rem, 5vw, 2.9rem); letter-spacing: -0.035em; line-height: 1.06; margin: 46px 0 10px; font-weight: 800; }
+    .sub { color: var(--muted); margin: 0 0 34px; }
+    h2 { font-size: 1.18rem; letter-spacing: -0.015em; margin: 36px 0 10px; }
+    p { color: var(--muted); }
+    .box {
+      padding: 22px; border-radius: 20px; background: var(--panel);
+      border: 1px solid var(--line); margin: 22px 0;
+    }
+    .box p:last-child { margin-bottom: 0; }
+    .mail {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 6px; padding: 11px 18px; border-radius: 13px;
+      background: #fff; color: #000; font-weight: 700; text-decoration: none;
+    }
+    .qa { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px; margin-top: 18px; }
+    .qa h3 { margin: 0 0 6px; font-size: 1rem; }
+    .qa p { margin: 0 0 4px; font-size: 0.96rem; }
+    .steps { color: var(--muted); padding-left: 20px; }
+    .steps li { margin-bottom: 7px; }
+    .footer { padding: 40px 0 44px; color: var(--faint); font-size: 0.88rem; }
+    .footer-row { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer a { opacity: .7; text-decoration: none; }
+    .footer a:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-row">
+      <a class="brand" href="/"><img src="/media/icon.png" alt="" /><span>iFlipbook</span></a>
+      <a class="plain" href="/">← Home</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Support</h1>
+    <p class="sub">A real person reads every message. Usually you'll hear back within a day or two.</p>
+
+    <div class="box">
+      <h2 style="margin-top:0">Email us</h2>
+      <p>Bugs, feature ideas, refund questions, or a drawing you're proud of — all welcome.</p>
+      <a class="mail" href="mailto:hello@swiftian.com?subject=iFlipbook%20support">hello@swiftian.com</a>
+    </div>
+
+    <div class="box">
+      <h2 style="margin-top:0">Or write from inside the app</h2>
+      <p>
+        The in-app feedback box sends your message straight to the maker, and the reply
+        comes back to the same place — no email address needed.
+      </p>
+      <ol class="steps">
+        <li>Open iFlipbook and tap the <strong>ⓘ</strong> button on your shelf</li>
+        <li>Scroll to <strong>Support</strong> and tap the speech-bubble icon</li>
+        <li>Write your message and send — a dot appears when a reply arrives</li>
+      </ol>
+      <p style="margin-bottom:0">
+        Please include your device (iPhone, iPad, or Mac) and what you were doing when
+        something went wrong. It makes a fix much faster.
+      </p>
+    </div>
+
+    <h2>Common questions</h2>
+
+    <div class="qa">
+      <h3>I bought Unlock — how do I get it on my other device?</h3>
+      <p>
+        Open the paywall (Share ▸ Unlock, or Settings) and tap <strong>Restore Purchases</strong>.
+        Use the same Apple Account you bought with. One purchase covers iPhone, iPad, and Mac.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>Where are my flipbooks stored?</h3>
+      <p>
+        On your device, in the app's own library. Deleting the app deletes them, so export
+        anything you want to keep — or publish it to the gallery.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>My exported GIF looks small.</h3>
+      <p>
+        Free GIF exports are capped at 512&nbsp;px. Unlock removes the cap and adds PNG,
+        APNG, SVG, and full-resolution GIF.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>How do I remove something I published to the gallery?</h3>
+      <p>
+        Open the Gallery tab, find your post, and delete it. To remove everything at once —
+        posts, reactions, reports, and your display name — use
+        <strong>Settings ▸ Delete My Gallery Data</strong>.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>Something in the gallery shouldn't be there.</h3>
+      <p>
+        Tap the post, then use <strong>Report</strong> or <strong>Block this creator</strong>.
+        Reported posts are hidden from the feed automatically once enough people flag them,
+        and we review reports directly. You can undo blocks in Settings.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>What happened to my AI credits?</h3>
+      <p>
+        Each AI drawing spends one credit, and a failed generation refunds it. Credits live
+        on the device where you earned or bought them.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>How do I request a refund?</h3>
+      <p>
+        Purchases are handled by Apple, so refunds go through them:
+        <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.
+        Tell us what went wrong too — we'd rather fix it.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>© 2026 iFlipbook · <a href="https://swiftian.com">Swiftian Inc.</a></div>
+      <div><a href="/privacy/">Privacy</a></div>
+    </div>
+  </footer>
+</body>
+</html>

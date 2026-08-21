@@ -4,106 +4,209 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — iFlipbook</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="What iFlipbook stores on your device, what leaves it and only when you ask, and how to delete anything you've shared." />
+  <meta name="theme-color" content="#060816" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <style>
-    :root{
-      --bg:#060816; --bg-soft:#0b1020; --text:#eef2ff; --muted:#a7b0c5;
-      --line:rgba(255,255,255,.1); --accent:#22d3ee;
+    :root {
+      --text: #eef2ff; --muted: #a7b0c5; --faint: #6f7994;
+      --line: rgba(255,255,255,0.1); --panel: rgba(255,255,255,0.045);
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-      color:var(--text); line-height:1.7;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text); line-height: 1.7;
       background:
-        radial-gradient(circle at 15% 10%, rgba(124,58,237,.22), transparent 30%),
-        radial-gradient(circle at 90% 0%, rgba(34,211,238,.16), transparent 26%),
-        linear-gradient(180deg,#050816,#0a1020);
-      -webkit-font-smoothing:antialiased;
+        radial-gradient(circle at 12% 10%, rgba(124,58,237,0.20), transparent 30%),
+        radial-gradient(circle at 88% 6%, rgba(34,211,238,0.14), transparent 26%),
+        linear-gradient(180deg, #050816 0%, #080c1c 60%, #05070f 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap{max-width:720px; margin:0 auto; padding:52px 20px 60px}
-    .brand{display:inline-flex; align-items:center; gap:11px; margin-bottom:30px; font-weight:700}
-    .brand img{width:34px; height:34px; border-radius:10px; display:block}
-    .brand a{color:var(--text); text-decoration:none}
-    .card{
-      border:1px solid var(--line); border-radius:22px; padding:36px 30px 28px;
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
-    }
-    h1{margin:0 0 6px; font-size:2rem; letter-spacing:-.02em}
-    .eff{color:var(--muted); font-size:.9rem; margin:0 0 24px}
-    h2{font-size:1.1rem; margin:26px 0 8px}
-    p{margin:0 0 12px; color:#c7cee2}
-    a.inline{color:var(--accent); text-decoration:none}
-    a.inline:hover{text-decoration:underline}
-    hr{border:none; border-top:1px solid var(--line); margin:24px 0}
-    .back{display:inline-block; margin-top:22px; color:var(--muted); text-decoration:none; font-size:.9rem}
-    .back:hover{color:var(--text)}
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(760px, calc(100% - 36px)); margin: 0 auto; }
+    .nav { border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(6,8,22,0.7); backdrop-filter: blur(12px); }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 700; text-decoration: none; }
+    .brand img { width: 32px; height: 32px; border-radius: 9px; }
+    .nav a.plain { color: var(--muted); text-decoration: none; font-size: 0.92rem; }
+    .nav a.plain:hover { color: var(--text); }
+    h1 { font-size: clamp(2rem, 5vw, 2.9rem); letter-spacing: -0.035em; line-height: 1.06; margin: 46px 0 8px; font-weight: 800; }
+    .eff { color: var(--faint); font-size: 0.9rem; margin: 0 0 30px; }
+    h2 { font-size: 1.2rem; letter-spacing: -0.015em; margin: 38px 0 10px; }
+    h3 { font-size: 1.02rem; margin: 22px 0 6px; }
+    p, li { color: var(--muted); }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 7px; }
+    strong { color: #dfe5ff; }
+    .lede { color: #c9d1e8; font-size: 1.05rem; }
+    .box { padding: 20px 22px; border-radius: 18px; background: var(--panel); border: 1px solid var(--line); margin: 24px 0; }
+    .box p:first-child { margin-top: 0; }
+    .box p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 4px; font-size: 0.95rem; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
+    th { color: #dfe5ff; font-weight: 600; font-size: 0.9rem; }
+    td { color: var(--muted); }
+    .footer { padding: 40px 0 44px; color: var(--faint); font-size: 0.88rem; }
+    .footer-row { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer a { opacity: .7; text-decoration: none; }
+    .footer a:hover { opacity: 1; }
+    @media (max-width: 560px) { table, thead, tbody, th, td, tr { display: block; } th { display: none; } td { border: none; padding: 4px 0; } tr { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px 0; } td:first-child { color: #dfe5ff; font-weight: 600; } }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="brand"><a href="/"><img src="/assets/iflipbook-icon.png" alt="" /> iFlipbook</a></div>
+  <header class="nav">
+    <div class="container nav-row">
+      <a class="brand" href="/"><img src="/media/icon.png" alt="" /><span>iFlipbook</span></a>
+      <a class="plain" href="/">← Home</a>
+    </div>
+  </header>
 
-    <main class="card">
-      <h1>Privacy Policy</h1>
-      <p class="eff">Effective July 9, 2026</p>
+  <main class="container">
+    <h1>Privacy Policy</h1>
+    <p class="eff">Effective August 21, 2026 · iFlipbook is made by Swiftian Inc.</p>
 
+    <p class="lede">
+      iFlipbook works without an account. Your drawings live on your device, and nothing
+      leaves it unless you tap something that sends it — publishing to the gallery, asking
+      the AI to draw, or writing to us. We don't sell your data, we don't run ads, and we
+      don't embed cross-app tracking.
+    </p>
+
+    <h2>What stays on your device</h2>
+    <p>
+      Your flipbooks, frames, drawings, palettes, and settings are stored in the app's own
+      storage on your device. We have no copy of them. Deleting the app deletes them, so
+      export anything you want to keep.
+    </p>
+
+    <h2>What leaves your device — and only when you ask</h2>
+
+    <table>
+      <thead>
+        <tr><th>When you…</th><th>What is sent</th><th>Where it goes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Publish to the gallery</td>
+          <td>The flipbook you chose, its thumbnail, the title you type, the display name you pick, and an anonymous creator ID</td>
+          <td>Apple's CloudKit public database</td>
+        </tr>
+        <tr>
+          <td>Use AI drawing</td>
+          <td>The text prompt you type (and, for edits, the shapes being changed)</td>
+          <td>Our proxy server, then Anthropic's API</td>
+        </tr>
+        <tr>
+          <td>Send feedback in the app</td>
+          <td>Your message, an anonymous install ID, and app version, build, OS version, and language</td>
+          <td>Our proxy server</td>
+        </tr>
+        <tr>
+          <td>Simply open the app</td>
+          <td>An anonymous install ID with counts of sessions and feature uses (for example "exported 3 times"), by day</td>
+          <td>Apple's CloudKit</td>
+        </tr>
+        <tr>
+          <td>Buy something</td>
+          <td>Handled entirely by Apple — we never see your payment details</td>
+          <td>Apple</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box">
       <p>
-        iFlipbook is made by Swiftian Inc. We keep things simple: the app works
-        without an account, and we do not collect, sell, or share personal
-        information for advertising.
+        <strong>About the anonymous ID.</strong> When you first launch the app it generates a
+        random identifier and stores it in the device keychain. It isn't your Apple Account,
+        your name, or your device's advertising identifier, and it isn't linked to your
+        identity. It exists so replies to your feedback come back to you, so gallery posts
+        can be recognized as yours to delete, and so usage counts aren't double-counted. We
+        do not use it to track you across other apps or websites.
       </p>
+    </div>
 
-      <h2>Your drawings</h2>
-      <p>
-        Your flipbooks and drawings are created and stored on your device. If you
-        enable iCloud, they may sync through your Apple ID using Apple&rsquo;s iCloud,
-        handled under Apple&rsquo;s
-        <a class="inline" href="https://www.apple.com/legal/privacy/">Privacy Policy</a>.
-        We don&rsquo;t have our own servers that store your artwork.
-      </p>
+    <h2>The gallery is public</h2>
+    <p>
+      Anything you publish can be seen, watched, and remixed by anyone using the app, along
+      with the title and display name you chose. Don't publish anything you wouldn't want
+      public. You can delete your posts at any time — see below.
+    </p>
+    <p>
+      To keep the gallery usable, posts can be reported and creators can be blocked. Posts
+      that receive enough reports are hidden from the feed automatically, and we review
+      reports and remove content that breaks the rules. Reports store the reported post's ID,
+      a reason, and the anonymous ID of the reporter.
+    </p>
 
-      <h2>Sharing &amp; exporting</h2>
-      <p>
-        Exporting a video, GIF, or image, or sharing a project, happens only when
-        you choose to. Content leaves your device only through the share options you
-        pick.
-      </p>
+    <h2>What we never collect</h2>
+    <ul>
+      <li>No account, name, email address, phone number, or date of birth</li>
+      <li>No location, contacts, calendar, or photo library scanning</li>
+      <li>No advertising identifier, and no third-party advertising or analytics SDKs</li>
+      <li>No tracking of you across other companies' apps or websites</li>
+    </ul>
 
-      <h2>What we don&rsquo;t do</h2>
-      <p>
-        We don&rsquo;t require personal details, and we don&rsquo;t embed third-party
-        advertising or cross-app tracking SDKs. Purchases, when offered, are handled
-        by Apple through the App Store.
-      </p>
+    <h2>Who processes data for us</h2>
+    <ul>
+      <li><strong>Apple</strong> — CloudKit stores gallery posts and usage counts; the App Store handles purchases.</li>
+      <li><strong>Cloudflare</strong> — runs the small proxy server that AI prompts and feedback messages pass through.</li>
+      <li><strong>Anthropic</strong> — generates AI drawings from your prompt. Prompts are sent for that purpose only.</li>
+    </ul>
+    <p>These providers process data on our behalf. We do not sell or rent data to anyone.</p>
 
-      <h2>Children</h2>
-      <p>
-        iFlipbook is family-friendly and does not knowingly collect personal
-        information from children.
-      </p>
+    <h2>How long things are kept</h2>
+    <ul>
+      <li><strong>Gallery posts</strong> — until you delete them.</li>
+      <li><strong>Feedback messages</strong> — kept while the conversation is useful, then removed.</li>
+      <li><strong>AI prompts</strong> — cached briefly (about a day) so repeating a request is fast, then discarded.</li>
+      <li><strong>Usage counts</strong> — aggregate daily counts, kept to understand which features people actually use.</li>
+    </ul>
 
-      <h2>Changes</h2>
-      <p>
-        We may update this policy as the app evolves. Material changes will appear
-        here with a new effective date.
-      </p>
+    <h2>Deleting what you've shared</h2>
+    <ul>
+      <li><strong>A single post</strong> — open it in the Gallery tab and delete it.</li>
+      <li><strong>Everything at once</strong> — Settings ▸ <strong>Delete My Gallery Data</strong> removes your posts, reactions, reports, and display name.</li>
+      <li><strong>Feedback messages</strong> — email us and we'll delete your thread.</li>
+      <li><strong>Everything on the device</strong> — deleting the app removes your flipbooks and the anonymous ID.</li>
+    </ul>
+    <p>
+      If you'd like us to confirm what's associated with your anonymous ID, or to erase it,
+      write to us and we'll take care of it.
+    </p>
 
-      <hr>
-      <p>
-        Questions? <a class="inline email" data-u="hello" data-d="swiftian.com" href="#">Contact&nbsp;us</a>.
-      </p>
-    </main>
+    <h2>Children</h2>
+    <p>
+      iFlipbook is for a general audience and isn't directed at children under 13. We don't
+      knowingly collect personal information from children. Because the gallery is public,
+      younger users should have a parent or guardian decide whether publishing is appropriate.
+      If you believe a child has shared personal information through the app, email us and
+      we'll remove it.
+    </p>
 
-    <a class="back" href="/">&larr; Back to iFlipbook</a>
-  </div>
+    <h2>Changes</h2>
+    <p>
+      If this policy changes in a way that affects what we collect, we'll update this page
+      and its effective date, and describe the change in the app's release notes.
+    </p>
 
-  <script>
-    document.querySelectorAll('a.email').forEach(function(a){
-      a.href = 'mailto:' + a.dataset.u + String.fromCharCode(64) + a.dataset.d;
-    });
-  </script>
+    <h2>Contact</h2>
+    <p>
+      Questions, deletion requests, or anything else:
+      <a href="mailto:hello@swiftian.com?subject=iFlipbook%20privacy">hello@swiftian.com</a>.
+      You can also write from inside the app — see <a href="/support/">Support</a>.
+    </p>
+    <p style="color:var(--faint);font-size:0.92rem">Swiftian Inc.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>© 2026 iFlipbook · <a href="https://swiftian.com">Swiftian Inc.</a></div>
+      <div><a href="/support/">Support</a></div>
+    </div>
+  </footer>
 </body>
 </html>

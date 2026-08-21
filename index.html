@@ -3,291 +3,409 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iFlipbook — Draw fast. Animate instantly.</title>
-  <meta
-    name="description"
-    content="Sketch quickly, add frames, zoom, tweak, and turn ideas into polished vector animations in seconds with iFlipbook."
-  />
-  <meta name="theme-color" content="#0b1020" />
+  <title>iFlipbook — Draw one frame. Then the next.</title>
+  <meta name="description" content="A flipbook animation app for iPhone, iPad, and Mac. Draw frame by frame, let tweens fill the gaps, and export a GIF, video, or sticker in seconds." />
+  <meta name="theme-color" content="#060816" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="iFlipbook" />
-  <meta property="og:description" content="Draw fast. Frame it. Animate it in seconds." />
-  <meta property="og:image" content="https://iflipbook.com/assets/iflipbook-icon.png" />
+  <meta property="og:description" content="Draw one frame. Then the next. Flip it and it's alive." />
+  <meta property="og:image" content="https://iflipbook.com/media/shot-library.jpg" />
+  <meta property="og:url" content="https://iflipbook.com" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
     :root {
       --bg: #060816;
-      --bg-soft: #0b1020;
-      --panel: rgba(255, 255, 255, 0.06);
       --text: #eef2ff;
       --muted: #a7b0c5;
+      --faint: #6f7994;
       --line: rgba(255, 255, 255, 0.1);
+      --panel: rgba(255, 255, 255, 0.045);
       --accent: #7c3aed;
       --accent-2: #22d3ee;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
       --radius: 24px;
-      --container: 1180px;
+      --container: 1120px;
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.28), transparent 28%),
-        radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.22), transparent 25%),
-        radial-gradient(circle at 60% 80%, rgba(245, 158, 11, 0.12), transparent 22%),
-        linear-gradient(180deg, #050816 0%, #0a1020 100%);
-      line-height: 1.6;
+        radial-gradient(circle at 12% 12%, rgba(124, 58, 237, 0.26), transparent 30%),
+        radial-gradient(circle at 88% 8%, rgba(34, 211, 238, 0.18), transparent 26%),
+        radial-gradient(circle at 70% 92%, rgba(245, 158, 11, 0.10), transparent 24%),
+        linear-gradient(180deg, #050816 0%, #080c1c 55%, #05070f 100%);
+      background-attachment: fixed;
+      line-height: 1.62;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    img, video {
-      display: block;
-      max-width: 100%;
-    }
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    .container { width: min(var(--container), calc(100% - 36px)); margin: 0 auto; }
 
-    .container {
-      width: min(var(--container), calc(100% - 32px));
-      margin: 0 auto;
+    /* ── Nav ─────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: saturate(140%) blur(14px);
+      background: rgba(6, 8, 22, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-
-    .hero {
-      padding: 52px 0 28px;
+    .nav-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 12px 0;
     }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 700; letter-spacing: 0.01em; }
+    .brand img { width: 32px; height: 32px; border-radius: 9px; box-shadow: 0 8px 22px rgba(124,58,237,0.28); }
+    .nav-links { display: flex; align-items: center; gap: 22px; font-size: 0.92rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 8px 15px; border-radius: 11px; background: #fff; color: #000;
+      font-weight: 700; font-size: 0.88rem;
+    }
+    @media (max-width: 620px) { .nav-links a.hide-sm { display: none; } }
 
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero { padding: 66px 0 40px; }
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 34px;
-      align-items: center;
+      display: grid; grid-template-columns: 1.02fr 0.98fr;
+      gap: 48px; align-items: center;
     }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      margin-bottom: 14px;
-    }
-
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      display: block;
-      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.30);
-    }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      margin-top: 28px;
-      background: #fff;
-      color: #000;
-      padding: 12px 20px 12px 18px;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    .cta:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
-    .cta svg { width: 26px; height: 26px; flex: none; }
-    .cta .txt { display: flex; flex-direction: column; line-height: 1.05; text-align: left; }
-    .cta .txt small { font-size: 10px; font-weight: 500; opacity: .8; }
-    .cta .txt strong { font-size: 17px; font-weight: 800; }
-
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.04);
-      color: #d9ddff;
-      font-size: 0.9rem;
-      margin-bottom: 18px;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 7px 14px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--panel);
+      color: #d9ddff; font-size: 0.86rem; margin-bottom: 20px;
     }
-
+    .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); }
     h1 {
       margin: 0;
-      font-size: clamp(3rem, 7vw, 5.4rem);
-      line-height: 0.96;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.7rem, 6vw, 4.4rem);
+      line-height: 1.02; letter-spacing: -0.038em; font-weight: 800;
     }
-
-    .lead {
-      margin: 22px 0 0;
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
-
-    .points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 26px;
-    }
-
+    h1 .fade { color: var(--muted); }
+    .lead { margin: 22px 0 0; max-width: 560px; color: var(--muted); font-size: 1.06rem; }
+    .points { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
     .points span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 13px;
-      border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 13px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--panel);
+      color: #d7dcef; font-size: 0.88rem;
+    }
+    .cta-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 30px; }
+    .cta {
+      display: inline-flex; align-items: center; gap: 11px;
+      background: #fff; color: #000; padding: 12px 20px 12px 17px;
+      border-radius: 14px; box-shadow: 0 12px 34px rgba(0,0,0,0.4);
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 18px 44px rgba(0,0,0,0.5); }
+    .cta svg { width: 25px; height: 25px; flex: none; }
+    .cta .txt { display: flex; flex-direction: column; line-height: 1.06; text-align: left; }
+    .cta .txt small { font-size: 10px; font-weight: 500; opacity: .78; }
+    .cta .txt strong { font-size: 16px; font-weight: 800; }
+    .cta-note { color: var(--faint); font-size: 0.86rem; }
+
+    /* Phone frame holding the app preview */
+    .phone {
+      position: relative; width: min(300px, 82%); margin: 0 auto;
+      border-radius: 44px; padding: 11px;
+      background: linear-gradient(170deg, rgba(255,255,255,0.20), rgba(255,255,255,0.05));
+      box-shadow: 0 34px 90px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.10);
+    }
+    .phone video {
+      width: 100%; border-radius: 34px; background: #fff; aspect-ratio: 886 / 1920;
+      object-fit: cover;
+    }
+    .glow {
+      position: absolute; inset: -18% -12% -12%; z-index: -1;
+      background: radial-gradient(60% 50% at 50% 40%, rgba(124,58,237,0.34), transparent 70%);
+      filter: blur(28px);
+    }
+
+    /* ── Sections ────────────────────────────────────────── */
+    section.block { padding: 62px 0; }
+    .section-head { max-width: 640px; margin-bottom: 34px; }
+    .section-head h2 {
+      margin: 0; font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      letter-spacing: -0.028em; line-height: 1.12; font-weight: 800;
+    }
+    .section-head p { margin: 12px 0 0; color: var(--muted); }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      padding: 22px; border-radius: 20px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .card h3 { margin: 0 0 8px; font-size: 1.06rem; letter-spacing: -0.01em; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .card .ico {
+      width: 38px; height: 38px; border-radius: 11px; margin-bottom: 14px;
+      display: grid; place-items: center;
+      background: linear-gradient(160deg, rgba(124,58,237,0.34), rgba(34,211,238,0.20));
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 1.05rem;
+    }
+
+    /* Screenshot rail */
+    .rail {
+      display: grid; grid-auto-flow: column; grid-auto-columns: minmax(178px, 1fr);
+      gap: 16px; overflow-x: auto; padding: 4px 2px 14px;
+      scroll-snap-type: x mandatory; scrollbar-width: thin;
+    }
+    .rail figure {
+      margin: 0; scroll-snap-align: start;
+      border-radius: 20px; overflow: hidden;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--line);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.32);
+    }
+    .rail img { width: 100%; aspect-ratio: 1320 / 2868; object-fit: cover; }
+    .rail figcaption { padding: 11px 13px; font-size: 0.83rem; color: var(--muted); }
+
+    /* Desktop showcase */
+    .desk {
+      border-radius: 26px; overflow: hidden;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: #d7dcef;
-      font-size: 0.92rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      padding: 14px;
     }
+    .desk video, .desk img { width: 100%; border-radius: 16px; background: #fff; }
+    .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 34px; align-items: center; }
 
-    .showcase {
-      padding: 18px;
-      border-radius: 30px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+    /* Pricing */
+    .price {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
     }
-
-    .showcase video {
-      width: min(100%, 560px);
-      margin: 0 auto;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 24px;
-      background: #000;
+    .price .tier {
+      padding: 24px; border-radius: 22px;
+      background: var(--panel); border: 1px solid var(--line);
     }
+    .price .tier.hi { border-color: rgba(124,58,237,0.55); background: linear-gradient(180deg, rgba(124,58,237,0.14), rgba(255,255,255,0.03)); }
+    .price h3 { margin: 0 0 4px; font-size: 1.12rem; }
+    .price .tag { color: var(--faint); font-size: 0.88rem; margin-bottom: 14px; }
+    .price ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.94rem; }
+    .price li { margin-bottom: 6px; }
 
-    .image-section {
-      padding: 10px 0 34px;
-    }
-
-    .image-wrap {
-      display: flex;
-      justify-content: center;
-    }
-
-    .image-card {
-      width: min(320px, 100%);
-      border-radius: 22px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-    }
-
-    .image-card img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-    }
-
-    .image-card .caption {
-      padding: 12px 14px;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .footer {
-      padding: 18px 0 28px;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
+    /* Footer */
+    .footer { padding: 26px 0 40px; color: var(--muted); font-size: 0.9rem; }
     .footer-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; flex-wrap: wrap;
     }
+    .footer-links { display: flex; gap: 18px; font-size: 0.86rem; }
+    .footer-links a { opacity: .68; }
+    .footer-links a:hover { opacity: 1; }
 
-    .privacy-link {
-      opacity: 0.5;
-      font-size: 0.82rem;
+    @media (max-width: 940px) {
+      .hero-grid, .split { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 44px 0 24px; }
+      .phone { width: min(280px, 74%); }
     }
-
-    .privacy-link:hover {
-      opacity: 0.75;
-    }
-
-    @media (max-width: 920px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .showcase video {
-        width: min(100%, 460px);
-      }
-    }
-
     @media (max-width: 640px) {
-      .showcase video {
-        width: 100%;
-      }
-
-      .image-card {
-        width: min(280px, 100%);
-      }
-
-      .footer-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .cards, .price { grid-template-columns: 1fr; }
+      section.block { padding: 46px 0; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .cta { transition: none; }
     }
   </style>
 </head>
 <body>
+  <header class="nav">
+    <div class="container nav-row">
+      <a class="brand" href="/">
+        <img src="/media/icon.png" alt="" />
+        <span>iFlipbook</span>
+      </a>
+      <nav class="nav-links">
+        <a class="hide-sm" href="#how">How it works</a>
+        <a class="hide-sm" href="#desktop">Mac &amp; iPad</a>
+        <a href="/support/">Support</a>
+        <a class="nav-cta" href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener">Get the app</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="hero">
     <div class="container hero-grid">
       <section>
-        <div class="brand">
-          <img class="brand-mark" src="/assets/iflipbook-icon.png" alt="iFlipbook" />
-          <span>iFlipbook</span>
-        </div>
-        <div class="eyebrow">Vector sketching for fast animation</div>
-        <h1>Draw fast. Frame it. Animate it in seconds.</h1>
+        <div class="eyebrow"><span class="dot"></span> Frame-by-frame animation, on your phone</div>
+        <h1>Draw one frame.<br />Then the next.<br /><span class="fade">Flip it and it's alive.</span></h1>
         <p class="lead">
-          iFlipbook helps you sketch freely, add frames, zoom in, and tweak details to turn rough ideas into clean motion fast. Because it is vector-based, every drawing stays editable, reusable, and ready to grow into richer creative assets over time.
+          The oldest animation trick there is, rebuilt for a touchscreen. Sketch a drawing,
+          duplicate it, change it a little — press play and it moves. Tweens fill the gaps
+          between your frames, so a handful of drawings becomes smooth motion.
         </p>
-        <div class="points" aria-label="Product highlights">
-          <span>Quick sketch to motion</span>
-          <span>Editable vector assets</span>
-          <span>Built to evolve</span>
+        <div class="points" aria-label="Highlights">
+          <span>Vector strokes, always editable</span>
+          <span>Tweens between frames</span>
+          <span>GIF · video · sticker</span>
         </div>
-        <a class="cta" href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener" aria-label="Download iFlipbook on the App Store">
-          <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-59.5.9-118.7 43.5-118.7 132.2 0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-          <span class="txt"><small>Download on the</small><strong>App Store</strong></span>
-        </a>
+        <div class="cta-row">
+          <a class="cta" href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener" aria-label="Download iFlipbook on the App Store">
+            <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-59.5.9-118.7 43.5-118.7 132.2 0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            <span class="txt"><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <span class="cta-note">iPhone · iPad · Mac — free to start</span>
+        </div>
       </section>
 
-      <section class="showcase" aria-label="iFlipbook preview video">
-        <video autoplay muted loop playsinline controls poster="birthday.jpg">
-          <source src="hero.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <section aria-label="iFlipbook in motion">
+        <div class="phone">
+          <span class="glow" aria-hidden="true"></span>
+          <video autoplay muted loop playsinline poster="/media/shot-library.jpg">
+            <source src="/media/preview-phone.mp4" type="video/mp4" />
+          </video>
+        </div>
       </section>
     </div>
   </main>
 
-  <section class="image-section">
-    <div class="container image-wrap">
-      <div class="image-card">
-        <img src="birthday.jpg" alt="Cartoon-style birthday cake with candles and happy birthday lettering" />
-        <div class="caption">Playful sketches can become polished, reusable vector work.</div>
+  <section class="block" id="how">
+    <div class="container">
+      <div class="section-head">
+        <h2>Four taps to a moving drawing</h2>
+        <p>No timeline to learn, no rigging, no layers you have to plan in advance.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="ico" aria-hidden="true">✎</div>
+          <h3>Draw a frame</h3>
+          <p>Sketch with vector strokes. Fill regions with the bucket, nudge points later — nothing is baked into pixels.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">＋</div>
+          <h3>Add the next</h3>
+          <p>Duplicate what you drew and change it a little. Onion skin shows the frame behind so the motion stays honest.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">▶</div>
+          <h3>Press play</h3>
+          <p>Set how long each step takes, or let a tween glide between two drawings. Pinch to zoom and the camera move saves into the frame.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <div class="section-head">
+        <h2>Made with the app itself</h2>
+        <p>Every flipbook on the starter shelf was drawn in iFlipbook — open one and flip through its frames to see how it was built.</p>
+      </div>
+      <div class="rail">
+        <figure>
+          <img src="/media/shot-library.jpg" alt="The iFlipbook shelf showing seven hand-drawn starter flipbooks" loading="lazy" />
+          <figcaption>Your shelf is home</figcaption>
+        </figure>
+        <figure>
+          <img src="/media/shot-editor.jpg" alt="A frog under a lily pad in the iFlipbook editor" loading="lazy" />
+          <figcaption>Froggy's rainy day</figcaption>
+        </figure>
+        <figure>
+          <img src="/media/shot-otto.jpg" alt="Otto the doodle character mid-dance" loading="lazy" />
+          <figcaption>Otto's dance</figcaption>
+        </figure>
+        <figure>
+          <img src="/media/shot-latte.jpg" alt="A frog latte winking in a coffee cup" loading="lazy" />
+          <figcaption>A winking latte</figcaption>
+        </figure>
+        <figure>
+          <img src="/media/shot-birthday.jpg" alt="A birthday cake with flickering candles" loading="lazy" />
+          <figcaption>Candles that flicker</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="desktop">
+    <div class="container split">
+      <div class="desk">
+        <video autoplay muted loop playsinline poster="/media/shot-mac-editor.jpg">
+          <source src="/media/preview-mac.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="section-head" style="margin-bottom:0">
+        <h2>The same flipbook, on every screen</h2>
+        <p>
+          One purchase covers iPhone, iPad, and Mac. On iPad the canvas sits above a full
+          tool deck; on Mac it spreads into a desktop workspace with the frame strip along
+          the bottom. Your drawings follow you.
+        </p>
+        <div class="points" style="margin-top:22px">
+          <span>Apple Pencil</span>
+          <span>Trackpad &amp; keyboard</span>
+          <span>Full-resolution export</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <div class="section-head">
+        <h2>Share it, or don't</h2>
+        <p>Export to your camera roll, or publish to the in-app gallery where anyone can watch — and remix your flipbook into their own.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="ico" aria-hidden="true">↗</div>
+          <h3>Export anywhere</h3>
+          <p>GIF, MP4, PNG, APNG, or SVG. Add a white sticker border for messaging apps, or pick your own resolution.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">✦</div>
+          <h3>Draw with AI</h3>
+          <p>Describe something and it arrives as editable shapes on your canvas — not a flat image. Keep tweaking it like your own.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">⇄</div>
+          <h3>Remix the gallery</h3>
+          <p>Open anyone's published flipbook as your own editable copy. No account, no profile — just drawings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <div class="section-head">
+        <h2>Free to draw. One purchase to finish.</h2>
+        <p>No subscription, no ads, nothing that interrupts you mid-drawing.</p>
+      </div>
+      <div class="price">
+        <div class="tier">
+          <h3>Free</h3>
+          <div class="tag">Everything you need to make something</div>
+          <ul>
+            <li>Unlimited flipbooks and frames</li>
+            <li>Every drawing tool, tweens, camera moves</li>
+            <li>Export JPEG, MP4, and GIF</li>
+            <li>Publish and remix in the gallery</li>
+          </ul>
+        </div>
+        <div class="tier hi">
+          <h3>Unlock Everything</h3>
+          <div class="tag">One-time purchase, yours forever</div>
+          <ul>
+            <li>No badge on anything you export</li>
+            <li>PNG, APNG, SVG, and full-resolution GIF</li>
+            <li>100 AI drawing credits included</li>
+            <li>Works on iPhone, iPad, and Mac</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -295,7 +413,11 @@
   <footer class="footer">
     <div class="container footer-row">
       <div>© 2026 iFlipbook · <a href="https://swiftian.com" style="opacity:.85">Swiftian Inc.</a></div>
-      <a class="privacy-link" href="/privacy/">Privacy</a>
+      <nav class="footer-links">
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener">App Store</a>
+      </nav>
     </div>
   </footer>
 </body>
