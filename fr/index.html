@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iFlipbook — Draw one frame. Then the next.</title>
-  <meta name="description" content="A flipbook animation app for iPhone, iPad, and Mac. Draw frame by frame, let tweens fill the gaps, and export a GIF, video, or sticker in seconds." />
+  <title>iFlipbook: Dessin Animé GIF</title>
+  <meta name="description" content="Animation image par image — Tu as déjà dessiné un petit bonhomme au coin d&#x27;un cahier, puis fait défiler les pages pour le voir courir ? C&#x27;est ça…" />
   <meta name="theme-color" content="#060816" />
-  <meta name="google-site-verification" content="yXQ3vHCM6MC1OFQzujB3iHY1HMwDb8Yyl-Gl52tlKjU" />
-  <link rel="canonical" href="https://iflipbook.com/" />
+  <link rel="canonical" href="https://iflipbook.com/fr/" />
+  <meta name="apple-itunes-app" content="app-id=6759637879" />
   <link rel="alternate" hreflang="x-default" href="https://iflipbook.com/" />
   <link rel="alternate" hreflang="en" href="https://iflipbook.com/" />
   <link rel="alternate" hreflang="ar" href="https://iflipbook.com/ar/" />
@@ -29,55 +29,16 @@
   <link rel="alternate" hreflang="vi" href="https://iflipbook.com/vi/" />
   <link rel="alternate" hreflang="zh-Hans" href="https://iflipbook.com/zh-hans/" />
   <link rel="alternate" hreflang="zh-Hant" href="https://iflipbook.com/zh-hant/" />
-  <meta name="apple-itunes-app" content="app-id=6759637879, app-argument=https://iflipbook.com/" />
-  <meta property="og:site_name" content="iFlipbook" />
-  <meta property="og:locale" content="en_US" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="iFlipbook" />
-  <meta property="og:description" content="Draw one frame. Then the next. Flip it and it's alive." />
+  <meta property="og:site_name" content="iFlipbook" />
+  <meta property="og:locale" content="fr" />
+  <meta property="og:title" content="iFlipbook: Dessin Animé GIF" />
+  <meta property="og:description" content="Dessine une image. Ajoute la suivante. Change-la un peu. Appuie sur play. Ton dessin bouge." />
   <meta property="og:image" content="https://iflipbook.com/media/shot-library.jpg" />
-  <meta property="og:url" content="https://iflipbook.com" />
+  <meta property="og:url" content="https://iflipbook.com/fr/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "iFlipbook",
-    "alternateName": "iFlipbook: GIF Animation Maker",
-    "applicationCategory": "DesignApplication",
-    "applicationSubCategory": "Animation",
-    "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later, macOS",
-    "url": "https://iflipbook.com/",
-    "downloadUrl": "https://apps.apple.com/app/id6759637879",
-    "installUrl": "https://apps.apple.com/app/id6759637879",
-    "image": "https://iflipbook.com/media/icon.png",
-    "screenshot": [
-      "https://iflipbook.com/media/shot-editor.jpg",
-      "https://iflipbook.com/media/shot-library.jpg",
-      "https://iflipbook.com/media/shot-ipad.jpg"
-    ],
-    "description": "A flipbook animation app for iPhone, iPad, and Mac. Draw frame by frame, let tweens fill the gaps, and export a GIF, video, or sticker in seconds.",
-    "featureList": [
-      "Frame-by-frame drawing with onion skin",
-      "Automatic tweening between keyframes",
-      "GIF, video, and sticker export",
-      "Works on iPhone, iPad, and Mac"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "category": "Free with in-app purchase"
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "Swiftian Inc.",
-      "url": "https://swiftian.com"
-    }
-  }
-  </script>
   <style>
     :root {
       --bg: #060816;
@@ -288,19 +249,26 @@
     .langs a { color: var(--faint); }
     .langs a.on { color: var(--text); font-weight: 700; }
   </style>
+  <style>
+    .langs { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 18px; font-size: 0.82rem; }
+    .langs a { color: var(--faint); }
+    .langs a.on { color: var(--text); font-weight: 700; }
+    .footer-row { align-items: flex-start; }
+    .hook { font-size: clamp(1.05rem, 2.1vw, 1.32rem); font-weight: 600; color: var(--text); margin: 0 0 14px; max-width: 34em; }
+    .lead { max-width: 40em; }
+    :lang(ko) h1, :lang(ko) .hook, :lang(zh-Hans) h1, :lang(zh-Hant) h1 { word-break: keep-all; overflow-wrap: break-word; }
+  </style>
 </head>
 <body>
   <header class="nav">
     <div class="container nav-row">
-      <a class="brand" href="/">
+      <a class="brand" href="/fr/">
         <img src="/media/icon.png" alt="" />
         <span>iFlipbook</span>
       </a>
       <nav class="nav-links">
-        <a class="hide-sm" href="#how">How it works</a>
-        <a class="hide-sm" href="#desktop">Mac &amp; iPad</a>
-        <a href="/support/">Support</a>
-        <a class="nav-cta" href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener">Get the app</a>
+        <a href="/support/">Assistance</a>
+        <a class="nav-cta" href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener">App Store</a>
       </nav>
     </div>
   </header>
@@ -308,28 +276,19 @@
   <main class="hero">
     <div class="container hero-grid">
       <section>
-        <div class="eyebrow"><span class="dot"></span> Frame-by-frame animation, on your phone</div>
-        <h1>Draw one frame.<br />Then the next.<br /><span class="fade">Flip it and it's alive.</span></h1>
-        <p class="lead">
-          The oldest animation trick there is, rebuilt for a touchscreen. Sketch a drawing,
-          duplicate it, change it a little — press play and it moves. Tweens fill the gaps
-          between your frames, so a handful of drawings becomes smooth motion.
-        </p>
-        <div class="points" aria-label="Highlights">
-          <span>Vector strokes, always editable</span>
-          <span>Tweens between frames</span>
-          <span>GIF · video · sticker</span>
-        </div>
+        <div class="eyebrow"><span class="dot"></span> iPhone · iPad · Mac</div>
+        <h1>Animation image par image</h1>
+        <p class="hook">Dessine une image. Ajoute la suivante. Change-la un peu. Appuie sur play. Ton dessin bouge.</p>
+        <p class="lead">Tu as déjà dessiné un petit bonhomme au coin d&#x27;un cahier, puis fait défiler les pages pour le voir courir ? C&#x27;est ça, iFlipbook — le cahier a grandi.</p>
         <div class="cta-row">
-          <a class="cta" href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener" aria-label="Download iFlipbook on the App Store">
+          <a class="cta" href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener">
             <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-59.5.9-118.7 43.5-118.7 132.2 0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-            <span class="txt"><small>Download on the</small><strong>App Store</strong></span>
+            <span class="txt"><small>Télécharger dans l&#x27;</small><strong>App Store</strong></span>
           </a>
-          <span class="cta-note">iPhone · iPad · Mac — free to start</span>
+          <span class="cta-note">iPhone · iPad · Mac</span>
         </div>
       </section>
-
-      <section aria-label="iFlipbook in motion">
+      <section aria-label="iFlipbook">
         <div class="phone">
           <span class="glow" aria-hidden="true"></span>
           <video autoplay muted loop playsinline poster="/media/shot-library.jpg">
@@ -340,107 +299,38 @@
     </div>
   </main>
 
-  <section class="block" id="how">
+  <section class="block">
     <div class="container">
-      <div class="section-head">
-        <h2>Four taps to a moving drawing</h2>
-        <p>No timeline to learn, no rigging, no layers you have to plan in advance.</p>
-      </div>
       <div class="cards">
         <div class="card">
           <div class="ico" aria-hidden="true">✎</div>
-          <h3>Draw a frame</h3>
-          <p>Sketch with vector strokes. Fill regions with the bucket, nudge points later — nothing is baked into pixels.</p>
-        </div>
-        <div class="card">
-          <div class="ico" aria-hidden="true">＋</div>
-          <h3>Add the next</h3>
-          <p>Duplicate what you drew and change it a little. Onion skin shows the frame behind so the motion stays honest.</p>
-        </div>
-        <div class="card">
-          <div class="ico" aria-hidden="true">▶</div>
-          <h3>Press play</h3>
-          <p>Set how long each step takes, or let a tween glide between two drawings. Pinch to zoom and the camera move saves into the frame.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="container">
-      <div class="section-head">
-        <h2>Made with the app itself</h2>
-        <p>Every flipbook on the starter shelf was drawn in iFlipbook — open one and flip through its frames to see how it was built.</p>
-      </div>
-      <div class="rail">
-        <figure>
-          <img src="/media/shot-library.jpg" alt="The iFlipbook shelf showing seven hand-drawn starter flipbooks" loading="lazy" />
-          <figcaption>Your shelf is home</figcaption>
-        </figure>
-        <figure>
-          <img src="/media/shot-editor.jpg" alt="A frog under a lily pad in the iFlipbook editor" loading="lazy" />
-          <figcaption>Froggy's rainy day</figcaption>
-        </figure>
-        <figure>
-          <img src="/media/shot-otto.jpg" alt="Otto the doodle character mid-dance" loading="lazy" />
-          <figcaption>Otto's dance</figcaption>
-        </figure>
-        <figure>
-          <img src="/media/shot-latte.jpg" alt="A frog latte winking in a coffee cup" loading="lazy" />
-          <figcaption>A winking latte</figcaption>
-        </figure>
-        <figure>
-          <img src="/media/shot-birthday.jpg" alt="A birthday cake with flickering candles" loading="lazy" />
-          <figcaption>Candles that flicker</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="desktop">
-    <div class="container split">
-      <div class="desk">
-        <video autoplay muted loop playsinline poster="/media/shot-mac-editor.jpg">
-          <source src="/media/preview-mac.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="section-head" style="margin-bottom:0">
-        <h2>The same flipbook, on every screen</h2>
-        <p>
-          One purchase covers iPhone, iPad, and Mac. On iPad the canvas sits above a full
-          tool deck; on Mac it spreads into a desktop workspace with the frame strip along
-          the bottom. Your drawings follow you.
-        </p>
-        <div class="points" style="margin-top:22px">
-          <span>Apple Pencil</span>
-          <span>Trackpad &amp; keyboard</span>
-          <span>Full-resolution export</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="container">
-      <div class="section-head">
-        <h2>Share it, or don't</h2>
-        <p>Export to your camera roll, or publish to the in-app gallery where anyone can watch — and remix your flipbook into their own.</p>
-      </div>
-      <div class="cards">
-        <div class="card">
-          <div class="ico" aria-hidden="true">↗</div>
-          <h3>Export anywhere</h3>
-          <p>GIF, MP4, PNG, APNG, or SVG. Add a white sticker border for messaging apps, or pick your own resolution.</p>
-        </div>
-        <div class="card">
-          <div class="ico" aria-hidden="true">✦</div>
-          <h3>Draw with AI</h3>
-          <p>Describe something and it arrives as editable shapes on your canvas — not a flat image. Keep tweaking it like your own.</p>
+          <h3>DESSINE COMME SUR PAPIER</h3>
+          <p>Un canevas carré et net, un crayon agréable, un pot de peinture, des calques quand il en faut. La pelure d&#x27;oignon affiche les images voisines en filigrane : le dessin suivant tombe exactement au bon endroit.</p>
         </div>
         <div class="card">
           <div class="ico" aria-hidden="true">⇄</div>
-          <h3>Remix the gallery</h3>
-          <p>Open anyone's published flipbook as your own editable copy. No account, no profile — just drawings.</p>
+          <h3>LAISSE LES TWEENS FAIRE LE TRAVAIL ENNUYEUX</h3>
+          <p>Copie une image, déplace une forme, et iFlipbook remplit les images intermédiaires d&#x27;un mouvement fluide. Mélange coupes dessinées à la main et interpolations : sec quand tu veux du punch, soyeux quand tu veux de la fluidité. C&#x27;est ce mélange qui rend un folioscope vivant.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">▶</div>
+          <h3>PARS D&#x27;UN EXEMPLE</h3>
+          <p>Otto the Doodle et ses amis habitent ta bibliothèque dès le premier lancement. Ouvre la danse d&#x27;Otto, regarde comment elle est construite image par image, puis dessine par-dessus ou fais-en ta version.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">✨</div>
+          <h3>UNE AI QUI DESSINE DES FORMES, PAS DES IMAGES PLATES</h3>
+          <p>Décris quelque chose — « un dragon qui survole des montagnes » — et il arrive en formes vectorielles éditables. Déplace les éléments, change les couleurs, anime-les.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">↗</div>
+          <h3>PARTAGE PARTOUT</h3>
+          <p>Exporte en GIF ou MP4 gratuitement, en carré ou en vertical pour Reels et Shorts. Le déblocage en achat unique ouvre PNG, APNG, SVG et le GIF pleine résolution, et retire le badge — jamais d&#x27;abonnement.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">◎</div>
+          <h3>UNE GALERIE À REMIXER</h3>
+          <p>Publie un folioscope : chacun peut le regarder puis le remixer, avec crédit pour toi. Chaque œuvre publiée est un vrai document éditable, pas une vidéo verrouillée.</p>
         </div>
       </div>
     </div>
@@ -448,45 +338,42 @@
 
   <section class="block">
     <div class="container">
-      <div class="section-head">
-        <h2>Free to draw. One purchase to finish.</h2>
-        <p>No subscription, no ads, nothing that interrupts you mid-drawing.</p>
+      <div class="rail">
+        <figure><img src="/media/shot-library.jpg" alt="iFlipbook" loading="lazy" /></figure>
+        <figure><img src="/media/shot-editor.jpg" alt="iFlipbook" loading="lazy" /></figure>
+        <figure><img src="/media/shot-otto.jpg" alt="Otto" loading="lazy" /></figure>
+        <figure><img src="/media/shot-latte.jpg" alt="iFlipbook" loading="lazy" /></figure>
+        <figure><img src="/media/shot-birthday.jpg" alt="iFlipbook" loading="lazy" /></figure>
       </div>
-      <div class="price">
-        <div class="tier">
-          <h3>Free</h3>
-          <div class="tag">Everything you need to make something</div>
-          <ul>
-            <li>Unlimited flipbooks and frames</li>
-            <li>Every drawing tool, tweens, camera moves</li>
-            <li>Export JPEG, MP4, and GIF</li>
-            <li>Publish and remix in the gallery</li>
-          </ul>
-        </div>
-        <div class="tier hi">
-          <h3>Unlock Everything</h3>
-          <div class="tag">One-time purchase, yours forever</div>
-          <ul>
-            <li>No badge on anything you export</li>
-            <li>PNG, APNG, SVG, and full-resolution GIF</li>
-            <li>100 AI drawing credits included</li>
-            <li>Works on iPhone, iPad, and Mac</li>
-          </ul>
-        </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <div class="section-head">
+        <h2>Dessiner est gratuit. Regarder est gratuit. Partager est gratuit. À toi de jouer.</h2>
+        <p>Pour ceux qui gribouillent en marge, ceux qui animent pour la première fois et ceux qui testent une idée avant les gros logiciels.</p>
+      </div>
+      <div class="cta-row" style="justify-content:center">
+        <a class="cta" href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener">
+            <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-59.5.9-118.7 43.5-118.7 132.2 0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            <span class="txt"><small>Télécharger dans l&#x27;</small><strong>App Store</strong></span>
+          </a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container footer-row">
-      <div>© 2026 iFlipbook · <a href="https://swiftian.com" style="opacity:.85">Swiftian Inc.</a>
+      <div>
+        © 2026 iFlipbook · <a href="https://swiftian.com" style="opacity:.85">Swiftian Inc.</a>
         <nav class="langs" aria-label="Language">
-        <a href="/" class="on">English</a>
+        <a href="/">English</a>
         <a href="/ar/">العربية</a>
         <a href="/de/">Deutsch</a>
         <a href="/es/">Español</a>
         <a href="/es-mx/">Español (México)</a>
-        <a href="/fr/">Français</a>
+        <a href="/fr/" class="on">Français</a>
         <a href="/hi/">हिन्दी</a>
         <a href="/id/">Bahasa Indonesia</a>
         <a href="/it/">Italiano</a>
@@ -504,7 +391,7 @@
         </nav>
       </div>
       <nav class="footer-links">
-        <a href="/support/">Support</a>
+        <a href="/support/">Assistance</a>
         <a href="/privacy/">Privacy</a>
         <a href="https://apps.apple.com/app/id6759637879" target="_blank" rel="noopener">App Store</a>
       </nav>
