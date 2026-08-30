@@ -398,5 +398,39 @@
     </div>
   </footer>
 <!-- Cloudflare Web Analytics — 프록시 없이 도는 비콘. 쿠키도, 개인 식별도 없다. --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "19910af39e1b43edb0af1b9e65939b36"}'></script>
+<!-- 앱스토어 클릭 계측 — ct= 는 설치를 가르지만 클릭은 못 센다. 둘을 같이 봐야 이탈이 보인다.
+     식별자는 세션마다 새로 만드는 난수다. 쿠키도, IP 저장도, 개인 식별도 없다. -->
+<script>
+(function () {
+  var SITE = "iflipbook.com";
+  function sid() {
+    try {
+      var k = "sw_sid", v = sessionStorage.getItem(k);
+      if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2)); sessionStorage.setItem(k, v); }
+      return v;
+    } catch (_) { return "anon"; }
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+    if (!a) return;
+    var m = a.href.match(/id(\d+)/);
+    try {
+      fetch("https://claude-proxy-web.ilbulyori.workers.dev/events", {
+        method: "POST",
+        keepalive: true,
+        headers: { "content-type": "application/json", "x-device-id": sid() },
+        body: JSON.stringify({
+          meta: { app: SITE, build: "web", os: "web", locale: (navigator.language || "").slice(0, 8) },
+          events: [{
+            name: "appstore_click",
+            ts: Date.now() / 1000,
+            props: { site: SITE, app: m ? m[1] : "", path: location.pathname.slice(0, 64) }
+          }]
+        })
+      }).catch(function () {});
+    } catch (_) {}
+  }, true);
+})();
+</script>
 </body>
 </html>
