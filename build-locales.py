@@ -23,7 +23,8 @@ APP_REPO = pathlib.Path.home() / "Projects/iFlipbook"
 META = APP_REPO / "fastlane/metadata"
 SITE = pathlib.Path(__file__).parent
 APPID = "6759637879"
-STORE = f"https://apps.apple.com/app/id{APPID}"
+CT = "web-iflipbook"          # App Analytics 캠페인 토큰 — 이 사이트가 만든 설치를 가른다
+STORE = f"https://apps.apple.com/app/id{APPID}?ct={CT}"
 ORIGIN = "https://iflipbook.com"
 LASTMOD = "2026-08-24"
 
