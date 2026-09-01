@@ -244,6 +244,7 @@ def build(path, asc, hl, native, support, dl_small):
       <nav class="footer-links">
         <a href="/support/">{e(support)}</a>
         <a href="/privacy/">Privacy</a>
+        <span style="opacity:.55">blog — soon</span>
         <a href="https://swiftian.com">Swiftian</a>
         <a href="https://pythoneer.io">Pythoneer</a>
         <a href="https://coordigo.com">Coordigo</a>
