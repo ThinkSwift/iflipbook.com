@@ -121,6 +121,23 @@
   var local = detect(), cur;
   try { cur = localStorage.getItem("site_lang"); } catch(_){}
   if (cur !== "en" && cur !== local) cur = local;
+  // 다른 패밀리 사이트에서 고른 언어를 ?lang= 으로 이어받는다
+  try {
+    var q = new URLSearchParams(location.search).get("lang");
+    if (q === "en" || I18N[q]) { cur = q; if (q !== local && I18N[q]) local = q; }
+  } catch(_){}
+  var FAMILY = /^(swiftian\.com|iflipbook\.com|pythoneer\.io|coordigo\.com)$/;
+  function carryLang(lang){
+    document.querySelectorAll('a[href^="https://"]').forEach(function(a){
+      if (!FAMILY.test(a.hostname)) return;
+      try {
+        var u = new URL(a.href);
+        if (lang === "en" && local === "en") u.searchParams.delete("lang");
+        else u.searchParams.set("lang", lang);
+        a.href = u.toString();
+      } catch(_){}
+    });
+  }
   function apply(lang){
     cur = lang;
     try { localStorage.setItem("site_lang", lang); } catch(_){}
@@ -131,11 +148,12 @@
     });
     document.documentElement.lang = lang;
     var btn = document.getElementById("langToggle");
-    if (local === "en"){ btn.classList.add("hide"); }
+    if (cur === "en" && local === "en"){ btn.classList.add("hide"); }
     else {
       btn.classList.remove("hide");
-      btn.textContent = (lang === "en") ? I18N[local].name : "English";
+      btn.textContent = (lang === "en") ? (I18N[local] ? I18N[local].name : "English") : "English";
     }
+    carryLang(lang);
   }
   document.getElementById("langToggle").addEventListener("click", function(){ apply(cur === "en" ? local : "en"); });
   apply(cur);
