@@ -1,522 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iFlipbook — Draw one frame. Then the next.</title>
-  <meta name="description" content="A flipbook animation app for iPhone, iPad, and Mac. Draw frame by frame, let tweens fill the gaps, and export a GIF, video, or sticker in seconds." />
-  <meta name="theme-color" content="#060816" />
-  <meta name="google-site-verification" content="yXQ3vHCM6MC1OFQzujB3iHY1HMwDb8Yyl-Gl52tlKjU" />
-  <link rel="canonical" href="https://iflipbook.com/" />
-  <link rel="alternate" hreflang="x-default" href="https://iflipbook.com/" />
-  <link rel="alternate" hreflang="en" href="https://iflipbook.com/" />
-  <link rel="alternate" hreflang="ar" href="https://iflipbook.com/ar/" />
-  <link rel="alternate" hreflang="de" href="https://iflipbook.com/de/" />
-  <link rel="alternate" hreflang="es" href="https://iflipbook.com/es/" />
-  <link rel="alternate" hreflang="es-MX" href="https://iflipbook.com/es-mx/" />
-  <link rel="alternate" hreflang="fr" href="https://iflipbook.com/fr/" />
-  <link rel="alternate" hreflang="hi" href="https://iflipbook.com/hi/" />
-  <link rel="alternate" hreflang="id" href="https://iflipbook.com/id/" />
-  <link rel="alternate" hreflang="it" href="https://iflipbook.com/it/" />
-  <link rel="alternate" hreflang="ja" href="https://iflipbook.com/ja/" />
-  <link rel="alternate" hreflang="ko" href="https://iflipbook.com/ko/" />
-  <link rel="alternate" hreflang="nl" href="https://iflipbook.com/nl/" />
-  <link rel="alternate" hreflang="pt-BR" href="https://iflipbook.com/pt-br/" />
-  <link rel="alternate" hreflang="ru" href="https://iflipbook.com/ru/" />
-  <link rel="alternate" hreflang="sv" href="https://iflipbook.com/sv/" />
-  <link rel="alternate" hreflang="th" href="https://iflipbook.com/th/" />
-  <link rel="alternate" hreflang="tr" href="https://iflipbook.com/tr/" />
-  <link rel="alternate" hreflang="vi" href="https://iflipbook.com/vi/" />
-  <link rel="alternate" hreflang="zh-Hans" href="https://iflipbook.com/zh-hans/" />
-  <link rel="alternate" hreflang="zh-Hant" href="https://iflipbook.com/zh-hant/" />
-  <meta name="apple-itunes-app" content="app-id=6759637879, app-argument=https://iflipbook.com/" />
-  <meta property="og:site_name" content="iFlipbook" />
-  <meta property="og:locale" content="en_US" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="iFlipbook" />
-  <meta property="og:description" content="Draw one frame. Then the next. Flip it and it's alive." />
-  <meta property="og:image" content="https://iflipbook.com/media/shot-library.jpg" />
-  <meta property="og:url" content="https://iflipbook.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "iFlipbook",
-    "alternateName": "iFlipbook: GIF Animation Maker",
-    "applicationCategory": "DesignApplication",
-    "applicationSubCategory": "Animation",
-    "operatingSystem": "iOS 17.0 or later, iPadOS 17.0 or later, macOS",
-    "url": "https://iflipbook.com/",
-    "downloadUrl": "https://apps.apple.com/app/id6759637879?ct=web-iflipbook",
-    "installUrl": "https://apps.apple.com/app/id6759637879?ct=web-iflipbook",
-    "image": "https://iflipbook.com/media/icon.png",
-    "screenshot": [
-      "https://iflipbook.com/media/shot-editor.jpg",
-      "https://iflipbook.com/media/shot-library.jpg",
-      "https://iflipbook.com/media/shot-ipad.jpg"
-    ],
-    "description": "A flipbook animation app for iPhone, iPad, and Mac. Draw frame by frame, let tweens fill the gaps, and export a GIF, video, or sticker in seconds.",
-    "featureList": [
-      "Frame-by-frame drawing with onion skin",
-      "Automatic tweening between keyframes",
-      "GIF, video, and sticker export",
-      "Works on iPhone, iPad, and Mac"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "category": "Free with in-app purchase"
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "Swiftian Inc.",
-      "url": "https://swiftian.com"
-    }
-  }
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iFlipbook — Otto's Flipbook Diary</title>
+  <meta name="description" content="Otto's Flipbook Diary — a little animation blog from the iFlipbook studio. Hand-drawn loops, frame by frame.">
+  <meta name="theme-color" content="#0b0f1a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="iFlipbook — Otto's Flipbook Diary">
+  <meta property="og:description" content="Otto's Flipbook Diary — a little animation blog from the iFlipbook studio. Hand-drawn loops, frame by frame.">
+  <meta property="og:url" content="https://iflipbook.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #060816;
-      --text: #eef2ff;
-      --muted: #a7b0c5;
-      --faint: #6f7994;
-      --line: rgba(255, 255, 255, 0.1);
-      --panel: rgba(255, 255, 255, 0.045);
-      --accent: #7c3aed;
-      --accent-2: #22d3ee;
-      --radius: 24px;
-      --container: 1120px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 12% 12%, rgba(124, 58, 237, 0.26), transparent 30%),
-        radial-gradient(circle at 88% 8%, rgba(34, 211, 238, 0.18), transparent 26%),
-        radial-gradient(circle at 70% 92%, rgba(245, 158, 11, 0.10), transparent 24%),
-        linear-gradient(180deg, #050816 0%, #080c1c 55%, #05070f 100%);
-      background-attachment: fixed;
-      line-height: 1.62;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    img, video { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-
-    .container { width: min(var(--container), calc(100% - 36px)); margin: 0 auto; }
-
-    /* ── Nav ─────────────────────────────────────────────── */
-    .nav {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: saturate(140%) blur(14px);
-      background: rgba(6, 8, 22, 0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .nav-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; padding: 12px 0;
-    }
-    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 700; letter-spacing: 0.01em; }
-    .brand img { width: 32px; height: 32px; border-radius: 9px; box-shadow: 0 8px 22px rgba(124,58,237,0.28); }
-    .nav-links { display: flex; align-items: center; gap: 22px; font-size: 0.92rem; color: var(--muted); }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      padding: 8px 15px; border-radius: 11px; background: #fff; color: #000;
-      font-weight: 700; font-size: 0.88rem;
-    }
-    @media (max-width: 620px) { .nav-links a.hide-sm { display: none; } }
-
-    /* ── Hero ────────────────────────────────────────────── */
-    .hero { padding: 66px 0 40px; }
-    .hero-grid {
-      display: grid; grid-template-columns: 1.02fr 0.98fr;
-      gap: 48px; align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 7px 14px; border-radius: 999px;
-      border: 1px solid var(--line); background: var(--panel);
-      color: #d9ddff; font-size: 0.86rem; margin-bottom: 20px;
-    }
-    .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); }
-    h1 {
-      margin: 0;
-      font-size: clamp(2.7rem, 6vw, 4.4rem);
-      line-height: 1.02; letter-spacing: -0.038em; font-weight: 800;
-    }
-    h1 .fade { color: var(--muted); }
-    .lead { margin: 22px 0 0; max-width: 560px; color: var(--muted); font-size: 1.06rem; }
-    .points { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-    .points span {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 8px 13px; border-radius: 999px;
-      border: 1px solid var(--line); background: var(--panel);
-      color: #d7dcef; font-size: 0.88rem;
-    }
-    .cta-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 30px; }
-    .cta {
-      display: inline-flex; align-items: center; gap: 11px;
-      background: #fff; color: #000; padding: 12px 20px 12px 17px;
-      border-radius: 14px; box-shadow: 0 12px 34px rgba(0,0,0,0.4);
-      transition: transform .14s ease, box-shadow .14s ease;
-    }
-    .cta:hover { transform: translateY(-2px); box-shadow: 0 18px 44px rgba(0,0,0,0.5); }
-    .cta svg { width: 25px; height: 25px; flex: none; }
-    .cta .txt { display: flex; flex-direction: column; line-height: 1.06; text-align: left; }
-    .cta .txt small { font-size: 10px; font-weight: 500; opacity: .78; }
-    .cta .txt strong { font-size: 16px; font-weight: 800; }
-    .cta-note { color: var(--faint); font-size: 0.86rem; }
-
-    /* Phone frame holding the app preview */
-    .phone {
-      position: relative; width: min(300px, 82%); margin: 0 auto;
-      border-radius: 44px; padding: 11px;
-      background: linear-gradient(170deg, rgba(255,255,255,0.20), rgba(255,255,255,0.05));
-      box-shadow: 0 34px 90px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.10);
-    }
-    .phone video {
-      width: 100%; border-radius: 34px; background: #fff; aspect-ratio: 886 / 1920;
-      object-fit: cover;
-    }
-    .glow {
-      position: absolute; inset: -18% -12% -12%; z-index: -1;
-      background: radial-gradient(60% 50% at 50% 40%, rgba(124,58,237,0.34), transparent 70%);
-      filter: blur(28px);
-    }
-
-    /* ── Sections ────────────────────────────────────────── */
-    section.block { padding: 62px 0; }
-    .section-head { max-width: 640px; margin-bottom: 34px; }
-    .section-head h2 {
-      margin: 0; font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-      letter-spacing: -0.028em; line-height: 1.12; font-weight: 800;
-    }
-    .section-head p { margin: 12px 0 0; color: var(--muted); }
-
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .card {
-      padding: 22px; border-radius: 20px;
-      background: var(--panel); border: 1px solid var(--line);
-    }
-    .card h3 { margin: 0 0 8px; font-size: 1.06rem; letter-spacing: -0.01em; }
-    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-    .card .ico {
-      width: 38px; height: 38px; border-radius: 11px; margin-bottom: 14px;
-      display: grid; place-items: center;
-      background: linear-gradient(160deg, rgba(124,58,237,0.34), rgba(34,211,238,0.20));
-      border: 1px solid rgba(255,255,255,0.12);
-      font-size: 1.05rem;
-    }
-
-    /* Screenshot rail */
-    .rail {
-      display: grid; grid-auto-flow: column; grid-auto-columns: minmax(178px, 1fr);
-      gap: 16px; overflow-x: auto; padding: 4px 2px 14px;
-      scroll-snap-type: x mandatory; scrollbar-width: thin;
-    }
-    .rail figure {
-      margin: 0; scroll-snap-align: start;
-      border-radius: 20px; overflow: hidden;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--line);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.32);
-    }
-    .rail img { width: 100%; aspect-ratio: 1320 / 2868; object-fit: cover; }
-    .rail figcaption { padding: 11px 13px; font-size: 0.83rem; color: var(--muted); }
-
-    /* Desktop showcase */
-    .desk {
-      border-radius: 26px; overflow: hidden;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-      padding: 14px;
-    }
-    .desk video, .desk img { width: 100%; border-radius: 16px; background: #fff; }
-    .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 34px; align-items: center; }
-
-    /* Pricing */
-    .price {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-    }
-    .price .tier {
-      padding: 24px; border-radius: 22px;
-      background: var(--panel); border: 1px solid var(--line);
-    }
-    .price .tier.hi { border-color: rgba(124,58,237,0.55); background: linear-gradient(180deg, rgba(124,58,237,0.14), rgba(255,255,255,0.03)); }
-    .price h3 { margin: 0 0 4px; font-size: 1.12rem; }
-    .price .tag { color: var(--faint); font-size: 0.88rem; margin-bottom: 14px; }
-    .price ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.94rem; }
-    .price li { margin-bottom: 6px; }
-
-    /* Footer */
-    .footer { padding: 26px 0 40px; color: var(--muted); font-size: 0.9rem; }
-    .footer-row {
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; flex-wrap: wrap;
-    }
-    .footer-links { display: flex; gap: 18px; font-size: 0.86rem; }
-    .footer-links a { opacity: .68; }
-    .footer-links a:hover { opacity: 1; }
-
-    @media (max-width: 940px) {
-      .hero-grid, .split { grid-template-columns: 1fr; }
-      .cards { grid-template-columns: 1fr 1fr; }
-      .hero { padding: 44px 0 24px; }
-      .phone { width: min(280px, 74%); }
-    }
-    @media (max-width: 640px) {
-      .cards, .price { grid-template-columns: 1fr; }
-      section.block { padding: 46px 0; }
-      .footer-row { flex-direction: column; align-items: flex-start; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .cta { transition: none; }
-    }
-    .langs { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 18px; font-size: 0.82rem; }
-    .langs a { color: var(--faint); }
-    .langs a.on { color: var(--text); font-weight: 700; }
+    :root{--bg:#0b0f1a;--bg-2:#0e1422;--ink:#eef2ff;--muted:#9aa6c4;--line:rgba(255,255,255,.10);--ac:#22d3ee;--ac-soft:rgba(34,211,238,.4)}
+    *{box-sizing:border-box} html,body{margin:0}
+    body{font-family:"Inter",-apple-system,system-ui,sans-serif;color:var(--ink);
+      background:radial-gradient(1100px 660px at 82% -12%, rgba(34,211,238,.14), transparent 60%),
+                 radial-gradient(900px 600px at 0% 8%, rgba(129,140,248,.10), transparent 55%),
+                 linear-gradient(180deg,var(--bg-2),var(--bg));
+      min-height:100vh;-webkit-font-smoothing:antialiased}
+    .wrap{position:relative;z-index:1;width:100%;max-width:760px;margin:0 auto;padding:0 22px}
+    nav{display:flex;align-items:center;gap:11px;padding:26px 0 8px}
+    nav img{width:32px;height:32px;border-radius:8px;display:block}
+    nav .name{font-family:"Space Grotesk";font-weight:700;font-size:18px;flex:1}
+    .lang-toggle{font-size:13px;font-weight:600;color:var(--muted);border:1px solid var(--line);background:none;
+      border-radius:999px;padding:7px 14px;cursor:pointer;font-family:inherit;transition:color .14s,border-color .14s}
+    .lang-toggle:hover{color:var(--ac);border-color:var(--ac-soft)}
+    .lang-toggle.hide{display:none}
+    .kicker{font-family:"Space Grotesk";font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:34px 0 10px}
+    h1{font-family:"Space Grotesk";font-weight:700;font-size:clamp(30px,5.8vw,46px);line-height:1.06;margin:0;letter-spacing:-1px;
+      background:linear-gradient(100deg,#fff 30%,var(--ac) 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .intro{color:var(--muted);font-size:clamp(15px,2.3vw,16.5px);line-height:1.65;margin:14px 0 0;max-width:560px}
+    .stage{margin:26px 0 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#000}
+    .stage video{display:block;width:100%;max-height:min(62vh,520px);object-fit:contain;background:#000}
+    .blog{margin:34px 0 0}
+    .blog h2{font-family:"Space Grotesk";font-weight:600;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+    .post{border:1px dashed var(--line);border-radius:16px;padding:18px 20px;color:var(--muted)}
+    .post .p-ep{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);opacity:.9}
+    .post .p-title{font-family:"Space Grotesk";font-weight:600;font-size:16.5px;color:var(--ink);margin-top:5px}
+    .post .p-note{font-size:13.5px;margin-top:6px;line-height:1.55}
+    .store{display:flex;align-items:center;gap:12px;margin:30px 0 0}
+    .store a{display:block;line-height:0}
+    .store img{width:44px;height:44px;border-radius:11px;border:1px solid rgba(255,255,255,.10);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform .13s}
+    .store a:hover img{transform:translateY(-2px)}
+    .store .cap{font-size:10.5px;font-weight:600;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:5px;text-align:center}
+    .store .soon{font-size:12px;color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:6px 13px}
+    .more{margin:46px 0 0;padding-top:22px;border-top:1px solid var(--line)}
+    .more h2{font-family:"Space Grotesk";font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+    .site-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:6px 0;font-size:14px}
+    .site-row a{color:var(--ac);text-decoration:none;font-weight:600;font-family:"Space Grotesk"}
+    .site-row a:hover{text-decoration:underline;text-underline-offset:3px}
+    .site-row .d{color:var(--muted)}
+    footer{position:relative;z-index:1;text-align:center;font-size:13px;padding:42px 22px 32px;color:var(--muted)}
+    footer a{color:var(--ac);text-decoration:none}
+    footer a:hover{text-decoration:underline;text-underline-offset:3px}
+    footer a.mail{display:inline-flex;vertical-align:-3px}
+    footer a.mail svg{width:15px;height:15px}
+    footer .sep{opacity:.35;margin:0 8px}
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-row">
-      <a class="brand" href="/">
-        <img src="/media/icon.png" alt="" />
-        <span>iFlipbook</span>
-      </a>
-      <nav class="nav-links">
-        <a class="hide-sm" href="#how">How it works</a>
-        <a class="hide-sm" href="#desktop">Mac &amp; iPad</a>
-        <a href="/support/">Support</a>
-        <a class="nav-cta" href="https://apps.apple.com/app/id6759637879?ct=web-iflipbook" target="_blank" rel="noopener">Get the app</a>
-      </nav>
-    </div>
-  </header>
+  <div class="wrap">
+    <nav>
+      <img src="/media/icon.png" alt="iFlipbook">
+      <span class="name">iFlipbook</span>
+      <button class="lang-toggle hide" id="langToggle" type="button"></button>
+    </nav>
 
-  <main class="hero">
-    <div class="container hero-grid">
-      <section>
-        <div class="eyebrow"><span class="dot"></span> Frame-by-frame animation, on your phone</div>
-        <h1>Draw one frame.<br />Then the next.<br /><span class="fade">Flip it and it's alive.</span></h1>
-        <p class="lead">
-          The oldest animation trick there is, rebuilt for a touchscreen. Sketch a drawing,
-          duplicate it, change it a little — press play and it moves. Tweens fill the gaps
-          between your frames, so a handful of drawings becomes smooth motion.
-        </p>
-        <div class="points" aria-label="Highlights">
-          <span>Vector strokes, always editable</span>
-          <span>Tweens between frames</span>
-          <span>GIF · video · sticker</span>
-        </div>
-        <div class="cta-row">
-          <a class="cta" href="https://apps.apple.com/app/id6759637879?ct=web-iflipbook" target="_blank" rel="noopener" aria-label="Download iFlipbook on the App Store">
-            <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7-59.5.9-118.7 43.5-118.7 132.2 0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-            <span class="txt"><small>Download on the</small><strong>App Store</strong></span>
-          </a>
-          <span class="cta-note">iPhone · iPad · Mac — free to start</span>
-        </div>
-      </section>
+    <p class="kicker" data-t="kicker">A blog from the iFlipbook studio</p>
+    <h1>Otto&rsquo;s Flipbook Diary</h1>
+    <p class="intro" data-t="intro">Otto keeps a diary the only way he knows how — as tiny hand-drawn flipbook loops. A few frames, a little story, every episode.</p>
 
-      <section aria-label="iFlipbook in motion">
-        <div class="phone">
-          <span class="glow" aria-hidden="true"></span>
-          <video autoplay muted loop playsinline poster="/media/shot-library.jpg">
-            <source src="/media/preview-phone.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </section>
-    </div>
-  </main>
+    <div class="stage"><video src="/media/preview-phone.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
 
-  <section class="block" id="how">
-    <div class="container">
-      <div class="section-head">
-        <h2>Four taps to a moving drawing</h2>
-        <p>No timeline to learn, no rigging, no layers you have to plan in advance.</p>
+    <section class="blog">
+      <h2>Vol. 1</h2>
+      <div class="post">
+        <div class="p-ep">E1</div>
+        <div class="p-title" data-t="ep1t">Otto is warming up</div>
+        <div class="p-note" data-t="ep1n">The first entry is on the drawing desk right now. It will appear here — quietly — when the ink dries.</div>
       </div>
-      <div class="cards">
-        <div class="card">
-          <div class="ico" aria-hidden="true">✎</div>
-          <h3>Draw a frame</h3>
-          <p>Sketch with vector strokes. Fill regions with the bucket, nudge points later — nothing is baked into pixels.</p>
-        </div>
-        <div class="card">
-          <div class="ico" aria-hidden="true">＋</div>
-          <h3>Add the next</h3>
-          <p>Duplicate what you drew and change it a little. Onion skin shows the frame behind so the motion stays honest.</p>
-        </div>
-        <div class="card">
-          <div class="ico" aria-hidden="true">▶</div>
-          <h3>Press play</h3>
-          <p>Set how long each step takes, or let a tween glide between two drawings. Pinch to zoom and the camera move saves into the frame.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="block">
-    <div class="container">
-      <div class="section-head">
-        <h2>Made with the app itself</h2>
-        <p>Every flipbook on the starter shelf was drawn in iFlipbook — open one and flip through its frames to see how it was built.</p>
-      </div>
-      <div class="rail">
-        <figure>
-          <img src="/media/shot-library.jpg" alt="The iFlipbook shelf showing seven hand-drawn starter flipbooks" loading="lazy" />
-          <figcaption>Your shelf is home</figcaption>
-        </figure>
-        <figure>
-          <img src="/media/shot-editor.jpg" alt="A frog under a lily pad in the iFlipbook editor" loading="lazy" />
-          <figcaption>Froggy's rainy day</figcaption>
-        </figure>
-        <figure>
-          <img src="/media/shot-otto.jpg" alt="Otto the doodle character mid-dance" loading="lazy" />
-          <figcaption>Otto's dance</figcaption>
-        </figure>
-        <figure>
-          <img src="/media/shot-latte.jpg" alt="A frog latte winking in a coffee cup" loading="lazy" />
-          <figcaption>A winking latte</figcaption>
-        </figure>
-        <figure>
-          <img src="/media/shot-birthday.jpg" alt="A birthday cake with flickering candles" loading="lazy" />
-          <figcaption>Candles that flicker</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+    <div class="store"><div><a href="https://apps.apple.com/app/id6759637879?ct=web-iflipbook" target="_blank" rel="noopener" aria-label="iFlipbook on the App Store"><img src="/media/icon.png" alt="iFlipbook"></a><div class="cap">App Store</div></div></div>
 
-  <section class="block" id="desktop">
-    <div class="container split">
-      <div class="desk">
-        <video autoplay muted loop playsinline poster="/media/shot-mac-editor.jpg">
-          <source src="/media/preview-mac.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="section-head" style="margin-bottom:0">
-        <h2>The same flipbook, on every screen</h2>
-        <p>
-          One purchase covers iPhone, iPad, and Mac. On iPad the canvas sits above a full
-          tool deck; on Mac it spreads into a desktop workspace with the frame strip along
-          the bottom. Your drawings follow you.
-        </p>
-        <div class="points" style="margin-top:22px">
-          <span>Apple Pencil</span>
-          <span>Trackpad &amp; keyboard</span>
-          <span>Full-resolution export</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="more">
+      <h2 data-t="moreTitle">More from us</h2>
+      <div class="site-row"><a href="https://swiftian.com">swiftian.com</a> <span class="d" data-t="swDesc">chillfriends comics, read aloud</span></div>
+      <div class="site-row"><a href="https://pythoneer.io">pythoneer.io</a> <span class="d" data-t="pyDesc">one tile at a time</span></div>
+      <div class="site-row"><a href="https://coordigo.com">coordigo.com</a> <span class="d" data-t="coDesc">coordinate postcards</span></div>
+    </section>
+  </div>
 
-  <section class="block">
-    <div class="container">
-      <div class="section-head">
-        <h2>Share it, or don't</h2>
-        <p>Export to your camera roll, or publish to the in-app gallery where anyone can watch — and remix your flipbook into their own.</p>
-      </div>
-      <div class="cards">
-        <div class="card">
-          <div class="ico" aria-hidden="true">↗</div>
-          <h3>Export anywhere</h3>
-          <p>GIF, MP4, PNG, APNG, or SVG. Add a white sticker border for messaging apps, or pick your own resolution.</p>
-        </div>
-        <div class="card">
-          <div class="ico" aria-hidden="true">✦</div>
-          <h3>Draw with AI</h3>
-          <p>Describe something and it arrives as editable shapes on your canvas — not a flat image. Keep tweaking it like your own.</p>
-        </div>
-        <div class="card">
-          <div class="ico" aria-hidden="true">⇄</div>
-          <h3>Remix the gallery</h3>
-          <p>Open anyone's published flipbook as your own editable copy. No account, no profile — just drawings.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="container">
-      <div class="section-head">
-        <h2>Free to draw. One purchase to finish.</h2>
-        <p>No subscription, no ads, nothing that interrupts you mid-drawing.</p>
-      </div>
-      <div class="price">
-        <div class="tier">
-          <h3>Free</h3>
-          <div class="tag">Everything you need to make something</div>
-          <ul>
-            <li>Unlimited flipbooks and frames</li>
-            <li>Every drawing tool, tweens, camera moves</li>
-            <li>Export JPEG, MP4, and GIF</li>
-            <li>Publish and remix in the gallery</li>
-          </ul>
-        </div>
-        <div class="tier hi">
-          <h3>Unlock Everything</h3>
-          <div class="tag">One-time purchase, yours forever</div>
-          <ul>
-            <li>No badge on anything you export</li>
-            <li>PNG, APNG, SVG, and full-resolution GIF</li>
-            <li>100 AI drawing credits included</li>
-            <li>Works on iPhone, iPad, and Mac</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container footer-row">
-      <div>© 2026 iFlipbook · <a href="https://swiftian.com" style="opacity:.85">Swiftian Inc.</a>
-        <nav class="langs" aria-label="Language">
-        <a href="/" class="on">English</a>
-        <a href="/ar/">العربية</a>
-        <a href="/de/">Deutsch</a>
-        <a href="/es/">Español</a>
-        <a href="/es-mx/">Español (México)</a>
-        <a href="/fr/">Français</a>
-        <a href="/hi/">हिन्दी</a>
-        <a href="/id/">Bahasa Indonesia</a>
-        <a href="/it/">Italiano</a>
-        <a href="/ja/">日本語</a>
-        <a href="/ko/">한국어</a>
-        <a href="/nl/">Nederlands</a>
-        <a href="/pt-br/">Português (Brasil)</a>
-        <a href="/ru/">Русский</a>
-        <a href="/sv/">Svenska</a>
-        <a href="/th/">ไทย</a>
-        <a href="/tr/">Türkçe</a>
-        <a href="/vi/">Tiếng Việt</a>
-        <a href="/zh-hans/">简体中文</a>
-        <a href="/zh-hant/">繁體中文</a>
-        </nav>
-      </div>
-      <nav class="footer-links">
-        <a href="/support/">Support</a>
-        <a href="/privacy/">Privacy</a>
-        <span style="opacity:.55">blog — soon</span>
-        <a href="https://swiftian.com">Swiftian</a>
-        <a href="https://pythoneer.io">Pythoneer</a>
-        <a href="https://coordigo.com">Coordigo</a>
-        <a href="https://apps.apple.com/app/id6759637879?ct=web-iflipbook" target="_blank" rel="noopener">App Store</a>
-      </nav>
-    </div>
+  <footer>
+    <span>&copy; 2026 iFlipbook &middot; <a href='https://swiftian.com'>Swiftian Inc.</a></span>
+    <span class="sep">&middot;</span><a href="/support/">Support</a><span class="sep">&middot;</span><a href="/privacy/" data-t="privacy">Privacy</a>
+    <span class="sep">&middot;</span>
+    <a class="mail email" data-u="hello" data-d="swiftian.com" href="#" aria-label="Email us" title="Email us">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+    </a>
   </footer>
-<!-- Cloudflare Web Analytics — 프록시 없이 도는 비콘. 쿠키도, 개인 식별도 없다. --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "19910af39e1b43edb0af1b9e65939b36"}'></script>
-<!-- 앱스토어 클릭 계측 — ct= 는 설치를 가르지만 클릭은 못 센다. 둘을 같이 봐야 이탈이 보인다.
-     식별자는 세션마다 새로 만드는 난수다. 쿠키도, IP 저장도, 개인 식별도 없다. -->
+
+  <script>
+  var I18N = {"ko": {"name": "한국어", "kicker": "iFlipbook 스튜디오의 블로그", "intro": "오토는 자기가 아는 유일한 방식으로 일기를 씁니다 — 손으로 그린 작은 플립북 루프로요. 매화 몇 장의 프레임, 작은 이야기 하나.", "ep1t": "오토가 몸을 풀고 있어요", "ep1n": "첫 화가 지금 작화대 위에 있습니다. 잉크가 마르면 — 조용히 — 여기 올라옵니다.", "moreTitle": "우리가 만드는 것들", "privacy": "개인정보 처리방침", "swDesc": "칠프렌즈 코믹스, 낭독 연재", "pyDesc": "한 번에 타일 하나", "coDesc": "좌표 엽서"}, "ja": {"name": "日本語", "kicker": "iFlipbook スタジオのブログ", "intro": "オットーは自分の知っている唯一の方法で日記をつけます — 手描きの小さなパラパラ漫画ループで。毎話、数コマとささやかな物語。", "ep1t": "オットー、準備運動中", "ep1n": "第1話はいま作画机の上。インクが乾いたら — ひっそりと — ここに載ります。", "moreTitle": "私たちの作品", "privacy": "プライバシー", "swDesc": "チルフレンズ・コミックス朗読連載", "pyDesc": "タイルひとつずつ", "coDesc": "座標のポストカード"}, "zh-Hans": {"name": "简体中文", "kicker": "来自 iFlipbook 工作室的博客", "intro": "Otto 用他唯一会的方式写日记——手绘的小小翻页动画。每一集，几帧画面，一个小故事。", "ep1t": "Otto 正在热身", "ep1n": "第一篇正躺在画桌上。等墨水干了，它会悄悄出现在这里。", "moreTitle": "我们的作品", "privacy": "隐私政策", "swDesc": "Chillfriends 漫画朗读连载", "pyDesc": "一次一块瓷砖", "coDesc": "坐标明信片"}, "zh-Hant": {"name": "繁體中文", "kicker": "來自 iFlipbook 工作室的部落格", "intro": "Otto 用他唯一會的方式寫日記——手繪的小小翻頁動畫。每一集,幾格畫面,一個小故事。", "ep1t": "Otto 正在熱身", "ep1n": "第一篇正躺在畫桌上。等墨水乾了,它會悄悄出現在這裡。", "moreTitle": "我們的作品", "privacy": "隱私權政策", "swDesc": "Chillfriends 漫畫朗讀連載", "pyDesc": "一次一塊瓷磚", "coDesc": "座標明信片"}, "es": {"name": "Español", "kicker": "Un blog del estudio iFlipbook", "intro": "Otto escribe su diario de la única forma que conoce: pequeños bucles de animación dibujados a mano. Unos cuadros y una pequeña historia en cada episodio.", "ep1t": "Otto está calentando", "ep1n": "La primera entrada está ahora mismo en la mesa de dibujo. Aparecerá aquí — sin ruido — cuando se seque la tinta.", "moreTitle": "Más de nosotros", "privacy": "Privacidad", "swDesc": "cómics de Chillfriends, leídos en voz alta", "pyDesc": "una casilla a la vez", "coDesc": "postales de coordenadas"}, "fr": {"name": "Français", "kicker": "Un blog du studio iFlipbook", "intro": "Otto tient son journal de la seule façon qu'il connaisse : de petites boucles de flipbook dessinées à la main. Quelques images, une petite histoire, à chaque épisode.", "ep1t": "Otto s'échauffe", "ep1n": "La première entrée est sur la table à dessin. Elle apparaîtra ici — discrètement — quand l'encre aura séché.", "moreTitle": "Nos créations", "privacy": "Confidentialité", "swDesc": "les BD Chillfriends, lues à voix haute", "pyDesc": "une tuile à la fois", "coDesc": "cartes postales de coordonnées"}, "de": {"name": "Deutsch", "kicker": "Ein Blog aus dem iFlipbook-Studio", "intro": "Otto führt Tagebuch auf die einzige Art, die er kennt — als kleine handgezeichnete Daumenkino-Loops. Ein paar Bilder, eine kleine Geschichte, jede Folge.", "ep1t": "Otto wärmt sich auf", "ep1n": "Der erste Eintrag liegt gerade auf dem Zeichentisch. Er erscheint hier — ganz leise — sobald die Tinte trocken ist.", "moreTitle": "Mehr von uns", "privacy": "Datenschutz", "swDesc": "Chillfriends-Comics, vorgelesen", "pyDesc": "Stein für Stein", "coDesc": "Koordinaten-Postkarten"}, "pt": {"name": "Português", "kicker": "Um blog do estúdio iFlipbook", "intro": "Otto escreve seu diário do único jeito que sabe — pequenos loops de flipbook desenhados à mão. Alguns quadros e uma pequena história em cada episódio.", "ep1t": "Otto está aquecendo", "ep1n": "A primeira entrada está na mesa de desenho agora. Vai aparecer aqui — de mansinho — quando a tinta secar.", "moreTitle": "Mais do estúdio", "privacy": "Privacidade", "swDesc": "quadrinhos Chillfriends, lidos em voz alta", "pyDesc": "um bloco de cada vez", "coDesc": "cartões-postais de coordenadas"}, "ru": {"name": "Русский", "kicker": "Блог студии iFlipbook", "intro": "Отто ведёт дневник единственным известным ему способом — крошечными рисованными флипбук-петлями. Несколько кадров и маленькая история в каждом выпуске.", "ep1t": "Отто разминается", "ep1n": "Первая запись сейчас на рисовальном столе. Она появится здесь — тихо — когда высохнут чернила.", "moreTitle": "Ещё от нас", "privacy": "Конфиденциальность", "swDesc": "комиксы Chillfriends, озвученные вслух", "pyDesc": "по плитке за раз", "coDesc": "координатные открытки"}};
+  var EN = {"kicker": "A blog from the iFlipbook studio", "intro": "Otto keeps a diary the only way he knows how — as tiny hand-drawn flipbook loops. A few frames, a little story, every episode.", "ep1t": "Otto is warming up", "ep1n": "The first entry is on the drawing desk right now. It will appear here — quietly — when the ink dries.", "moreTitle": "More from us", "privacy": "Privacy", "swDesc": "chillfriends comics, read aloud", "pyDesc": "one tile at a time", "coDesc": "coordinate postcards"};
+  function detect(){
+    var langs = navigator.languages || [navigator.language || "en"];
+    for (var i=0;i<langs.length;i++){
+      var l = langs[i], two = l.slice(0,2).toLowerCase();
+      if (two === "en") return "en";
+      if (/^zh\b/.test(l)) return /tw|hk|mo|hant/i.test(l) ? "zh-Hant" : "zh-Hans";
+      if (I18N[two]) return two;
+    }
+    return "en";
+  }
+  var local = detect(), cur;
+  try { cur = localStorage.getItem("site_lang"); } catch(_){}
+  if (cur !== "en" && cur !== local) cur = local;
+  function apply(lang){
+    cur = lang;
+    try { localStorage.setItem("site_lang", lang); } catch(_){}
+    var d = (lang === "en" || !I18N[lang]) ? EN : I18N[lang];
+    document.querySelectorAll("[data-t]").forEach(function(el){
+      var k = el.getAttribute("data-t");
+      if (d[k]) el.textContent = d[k];
+    });
+    document.documentElement.lang = lang;
+    var btn = document.getElementById("langToggle");
+    if (local === "en"){ btn.classList.add("hide"); }
+    else {
+      btn.classList.remove("hide");
+      btn.textContent = (lang === "en") ? I18N[local].name : "English";
+    }
+  }
+  document.getElementById("langToggle").addEventListener("click", function(){ apply(cur === "en" ? local : "en"); });
+  apply(cur);
+  document.querySelectorAll('a.email').forEach(function(a){
+    a.href = 'mailto:' + a.dataset.u + String.fromCharCode(64) + a.dataset.d;
+  });
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "19910af39e1b43edb0af1b9e65939b36"}'></script>
 <script>
 (function () {
   var SITE = "iflipbook.com";
@@ -533,16 +160,12 @@
     var m = a.href.match(/id(\d+)/);
     try {
       fetch("https://claude-proxy-web.ilbulyori.workers.dev/events", {
-        method: "POST",
-        keepalive: true,
+        method: "POST", keepalive: true,
         headers: { "content-type": "application/json", "x-device-id": sid() },
         body: JSON.stringify({
           meta: { app: SITE, build: "web", os: "web", locale: (navigator.language || "").slice(0, 8) },
-          events: [{
-            name: "appstore_click",
-            ts: Date.now() / 1000,
-            props: { site: SITE, app: m ? m[1] : "", path: location.pathname.slice(0, 64) }
-          }]
+          events: [{ name: "appstore_click", ts: Date.now() / 1000,
+            props: { site: SITE, app: m ? m[1] : "", path: location.pathname.slice(0, 64) } }]
         })
       }).catch(function () {});
     } catch (_) {}
