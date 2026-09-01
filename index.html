@@ -118,44 +118,55 @@
     }
     return "en";
   }
-  var local = detect(), cur;
-  try { cur = localStorage.getItem("site_lang"); } catch(_){}
-  if (cur !== "en" && cur !== local) cur = local;
-  // 다른 패밀리 사이트에서 고른 언어를 ?lang= 으로 이어받는다
+  // ── 언어 상태는 단 두 값: cur(지금 보는 언어)와 alt(이 방문자의 '자기 언어', 항상 en 이 아님) ──
+  // alt 는 ①?lang= 전달 ②과거 선택(저장) ③브라우저 감지 순으로 정해지고, 토글은 en ⇄ alt 만 오간다.
+  var alt = null, cur = "en", saved = null, savedAlt = null;
+  try { saved = localStorage.getItem("site_lang"); savedAlt = localStorage.getItem("site_lang_alt"); } catch(_){}
+  if (I18N[savedAlt]) alt = savedAlt;
+  var det = detect();
+  if (!alt && det !== "en" && I18N[det]) alt = det;
+  cur = (saved === "en") ? "en" : (I18N[saved] ? saved : (alt || "en"));
   try {
     var q = new URLSearchParams(location.search).get("lang");
-    if (q === "en" || I18N[q]) { cur = q; if (q !== local && I18N[q]) local = q; }
+    if (q === "en") cur = "en";
+    else if (I18N[q]) { alt = q; cur = q; }
   } catch(_){}
+  if (cur !== "en" && cur !== alt) alt = cur;   // 불변식: cur 은 en 아니면 alt 다
+
   var FAMILY = /^(swiftian\.com|iflipbook\.com|pythoneer\.io|coordigo\.com)$/;
-  function carryLang(lang){
+  function carryLang(){
     document.querySelectorAll('a[href^="https://"]').forEach(function(a){
       if (!FAMILY.test(a.hostname)) return;
       try {
         var u = new URL(a.href);
-        if (lang === "en" && local === "en") u.searchParams.delete("lang");
-        else u.searchParams.set("lang", lang);
+        if (cur === "en" && !alt) u.searchParams.delete("lang");
+        else u.searchParams.set("lang", cur);
         a.href = u.toString();
       } catch(_){}
     });
   }
   function apply(lang){
-    cur = lang;
-    try { localStorage.setItem("site_lang", lang); } catch(_){}
-    var d = (lang === "en" || !I18N[lang]) ? EN : I18N[lang];
+    cur = (lang === "en" || !I18N[lang]) ? "en" : lang;
+    if (cur !== "en") alt = cur;
+    try {
+      localStorage.setItem("site_lang", cur);
+      if (alt) localStorage.setItem("site_lang_alt", alt);
+    } catch(_){}
+    var d = (cur === "en") ? EN : I18N[cur];
     document.querySelectorAll("[data-t]").forEach(function(el){
       var k = el.getAttribute("data-t");
       if (d[k]) el.textContent = d[k];
     });
-    document.documentElement.lang = lang;
+    document.documentElement.lang = cur;
     var btn = document.getElementById("langToggle");
-    if (cur === "en" && local === "en"){ btn.classList.add("hide"); }
+    if (!alt){ btn.classList.add("hide"); }
     else {
       btn.classList.remove("hide");
-      btn.textContent = (lang === "en") ? (I18N[local] ? I18N[local].name : "English") : "English";
+      btn.textContent = (cur === "en") ? I18N[alt].name : "English";
     }
-    carryLang(lang);
+    carryLang();
   }
-  document.getElementById("langToggle").addEventListener("click", function(){ apply(cur === "en" ? local : "en"); });
+  document.getElementById("langToggle").addEventListener("click", function(){ apply(cur === "en" ? alt : "en"); });
   apply(cur);
   document.querySelectorAll('a.email').forEach(function(a){
     a.href = 'mailto:' + a.dataset.u + String.fromCharCode(64) + a.dataset.d;
