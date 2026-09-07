@@ -283,7 +283,9 @@ def patch_root():
              f'      </div>\n')
     s, n = footer_re.subn(lambda _m: block, s, count=1)
     if n != 1:
-        raise SystemExit("index.html: could not locate the footer copyright block")
+        # 2026-09-01 블로그 개편으로 루트 푸터가 바뀌었고, 새 루트는 자체 en⇄alt
+        # 토글을 갖고 있어 .langs 나열이 필요 없다. hreflang 만 넣고 넘어간다.
+        print("index.html: 옛 푸터 블록 없음 — 언어 나열은 건너뛰고 hreflang 만 넣는다")
     p.write_text(s, encoding="utf-8")
 
 
