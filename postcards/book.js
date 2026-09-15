@@ -7,8 +7,8 @@ var BOOK = [
   "verse": "The lamp reaches the far bank\nbefore we do.",
   "draft": false,
   "look": "night",
-  "cover": 67.5,
-  "front": 32,
+  "cover": 53.0,
+  "front": 31,
   "landmarks": [
    "castle"
   ],
@@ -37,8 +37,8 @@ var BOOK = [
   "verse": "The last slice of quiet,\nkept for the walk home.",
   "draft": false,
   "look": "snow",
-  "cover": 75.9,
-  "front": 235,
+  "cover": 67.9,
+  "front": 234,
   "landmarks": [
    "castle",
    "cathedral",
@@ -74,8 +74,8 @@ var BOOK = [
   "verse": "Everyone crossing the square\nis on their way somewhere else.",
   "draft": false,
   "look": "day",
-  "cover": 77.8,
-  "front": 64,
+  "cover": 58.1,
+  "front": 63,
   "landmarks": [
    "castle",
    "cathedral"
@@ -105,8 +105,8 @@ var BOOK = [
   "verse": "The day hands it all over\nand asks nothing back.",
   "draft": false,
   "look": "sunset",
-  "cover": 55.6,
-  "front": 22,
+  "cover": 39.3,
+  "front": 21,
   "landmarks": [
    "chapel",
    "pagoda"
@@ -126,7 +126,7 @@ var BOOK = [
    "volume": 2
   },
   "seconds": 12.0,
-  "size": 984571
+  "size": 984792
  },
  {
   "n": 5,
@@ -136,8 +136,8 @@ var BOOK = [
   "verse": "Water is a rumour here.\nShade is the fact.",
   "draft": false,
   "look": "desert",
-  "cover": 72.6,
-  "front": 15,
+  "cover": 54.7,
+  "front": 14,
   "landmarks": [
    "cathedral",
    "pagoda"
@@ -157,7 +157,7 @@ var BOOK = [
    "volume": 3
   },
   "seconds": 12.0,
-  "size": 1011649
+  "size": 1014450
  },
  {
   "n": 6,
@@ -167,8 +167,8 @@ var BOOK = [
   "verse": "Small lights, far apart,\nand still a village.",
   "draft": false,
   "look": "autumn",
-  "cover": 65.0,
-  "front": 77,
+  "cover": 52.1,
+  "front": 76,
   "landmarks": [
    "cathedral",
    "pagoda"
