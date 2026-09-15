@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Postcards, Volume One — Otto's Flipbook Diary</title>
+  <meta name="description" content="Six twelve-second entries from Otto's diary. Every frame of the figure is hand-drawn in iFlipbook; the landscape he walks through comes from Coordigo.">
+  <meta name="theme-color" content="#0b0f1a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://iflipbook.com/postcards/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Postcards, Volume One — Otto's Flipbook Diary">
+  <meta property="og:description" content="Otto and Momo pass through six places. Hand-drawn, frame by frame.">
+  <meta property="og:url" content="https://iflipbook.com/postcards/">
+  <meta property="og:image" content="https://media.coordigo.com/postcards/v1/01-medium-20009.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--bg:#0b0f1a;--bg-2:#0e1422;--ink:#eef2ff;--muted:#9aa6c4;--line:rgba(255,255,255,.10);--ac:#22d3ee;--ac-soft:rgba(34,211,238,.4)}
+    *{box-sizing:border-box} html,body{margin:0}
+    body{font-family:"Inter",-apple-system,system-ui,sans-serif;color:var(--ink);
+      background:radial-gradient(1100px 660px at 82% -12%, rgba(34,211,238,.14), transparent 60%),
+                 radial-gradient(900px 600px at 0% 8%, rgba(129,140,248,.10), transparent 55%),
+                 linear-gradient(180deg,var(--bg-2),var(--bg));
+      min-height:100vh;-webkit-font-smoothing:antialiased}
+    .wrap{position:relative;z-index:1;width:100%;max-width:760px;margin:0 auto;padding:0 22px}
+    nav{display:flex;align-items:center;gap:11px;padding:26px 0 8px}
+    nav a{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit}
+    nav img{width:32px;height:32px;border-radius:8px;display:block}
+    nav .name{font-family:"Space Grotesk";font-weight:700;font-size:18px}
+    nav .here{margin-left:auto;font-size:13px;color:var(--muted)}
+    .kicker{font-family:"Space Grotesk";font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:34px 0 10px}
+    h1{font-family:"Space Grotesk";font-weight:700;font-size:clamp(30px,5.8vw,46px);line-height:1.06;margin:0;letter-spacing:-1px;
+      background:linear-gradient(100deg,#fff 30%,var(--ac) 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .intro{color:var(--muted);font-size:clamp(15px,2.3vw,16.5px);line-height:1.65;margin:14px 0 0;max-width:580px}
+    .intro b{color:var(--ink);font-weight:600}
+    .note{margin:20px 0 0;border:1px dashed var(--line);border-radius:16px;padding:15px 18px;
+      color:var(--muted);font-size:13.5px;line-height:1.6;max-width:580px}
+    .note b{color:var(--ink);font-weight:600}
+
+    .entry{margin:40px 0 0;padding-top:30px;border-top:1px solid var(--line)}
+    .entry:first-of-type{border-top:0;padding-top:12px}
+    .e-head{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;margin:0 0 12px}
+    .e-no{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);opacity:.9}
+    .e-title{font-family:"Space Grotesk";font-weight:700;font-size:clamp(19px,3vw,25px);margin:0;letter-spacing:-.4px}
+    .stage{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#000}
+    .stage video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+    .verse{font-family:"Newsreader",Georgia,serif;font-style:italic;font-weight:300;
+      font-size:clamp(16px,2.2vw,20px);line-height:1.42;white-space:pre-line;margin:16px 0 0;max-width:34ch;color:var(--ink)}
+    .facts{display:flex;gap:8px 22px;flex-wrap:wrap;margin:14px 0 0;font-size:13px;color:var(--muted);line-height:1.55}
+    .facts b{color:var(--ink);font-weight:500}
+    .facts .k{display:block;font-family:"Space Grotesk";font-weight:600;font-size:10px;letter-spacing:.13em;
+      text-transform:uppercase;color:rgba(154,166,196,.65)}
+    .store{display:flex;align-items:center;gap:12px;margin:34px 0 0}
+    .store a{display:block;line-height:0}
+    .store img{width:44px;height:44px;border-radius:11px;border:1px solid rgba(255,255,255,.10);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform .13s}
+    .store a:hover img{transform:translateY(-2px)}
+    .store .cap{font-size:10.5px;font-weight:600;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:5px;text-align:center}
+    .more{margin:46px 0 0;padding-top:22px;border-top:1px solid var(--line)}
+    .more h2{font-family:"Space Grotesk";font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+    .site-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:6px 0;font-size:14px}
+    .site-row a{color:var(--ac);text-decoration:none;font-weight:600;font-family:"Space Grotesk"}
+    .site-row a:hover{text-decoration:underline;text-underline-offset:3px}
+    .site-row .d{color:var(--muted)}
+    footer{position:relative;z-index:1;text-align:center;font-size:13px;padding:42px 22px 32px;color:var(--muted)}
+    footer a{color:var(--ac);text-decoration:none}
+    footer a:hover{text-decoration:underline;text-underline-offset:3px}
+    footer a.mail{display:inline-flex;vertical-align:-3px}
+    footer a.mail svg{width:15px;height:15px}
+    footer .sep{opacity:.35;margin:0 8px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="/"><img src="/media/icon.png" alt="iFlipbook"><span class="name">iFlipbook</span></a>
+      <span class="here">Postcards</span>
+    </nav>
+
+    <p class="kicker">Otto&rsquo;s Flipbook Diary &middot; Volume One</p>
+    <h1>Six places, and a cat who came along.</h1>
+    <p class="intro">
+      The ink dried. Otto and Momo went somewhere, stopped for a moment, and went on.
+      Every frame of the two of them is <b>hand-drawn in iFlipbook</b> — the same
+      frame-by-frame way you&rsquo;d draw yours.
+    </p>
+    <div class="note">
+      The places they walk through are landscapes from <b>Coordigo</b>, our other app, where you
+      uncover a picture one square at a time. <b>Drawing on a landscape isn&rsquo;t in iFlipbook yet</b> —
+      these were put together in the studio. Consider them something to watch while we build it.
+    </div>
+
+    <main id="entries"></main>
+
+    <div class="store">
+      <div>
+        <a href="https://apps.apple.com/app/id6759637879?ct=web-iflipbook" target="_blank" rel="noopener" aria-label="iFlipbook on the App Store"><img src="/media/icon.png" alt="iFlipbook"></a>
+        <div class="cap">App Store</div>
+      </div>
+    </div>
+
+    <section class="more">
+      <h2>More from us</h2>
+      <div class="site-row"><a href="https://coordigo.com">coordigo.com</a> <span class="d">the landscapes in these films</span></div>
+      <div class="site-row"><a href="https://swiftian.com">swiftian.com</a> <span class="d">the studio</span></div>
+      <div class="site-row"><a href="https://pythoneer.io">pythoneer.io</a> <span class="d">one tile at a time</span></div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2026 Swiftian Inc.
+    <span class="sep">&middot;</span><a href="/support/">Support</a><span class="sep">&middot;</span><a href="/privacy/">Privacy</a>
+    <span class="sep">&middot;</span>
+    <a class="mail email" data-u="hello" data-d="swiftian.com" href="#" aria-label="Email us" title="Email us">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/>
+      </svg>
+    </a>
+  </footer>
+
+  <script src="book.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var MEDIA = "https://media.coordigo.com/postcards/v1/";
+      var LOOK = { night: "Night", snow: "First snow", day: "Noon", sunset: "Late light",
+                   desert: "Dry wind", autumn: "Red leaves" };
+      var host = document.getElementById("entries");
+      if (typeof BOOK === "undefined") { host.innerHTML = ""; return; }
+
+      BOOK.forEach(function (ep) {
+        var s = document.createElement("section");
+        s.className = "entry";
+        s.id = ep.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+        var head = document.createElement("div");
+        head.className = "e-head";
+        var no = document.createElement("span");
+        no.className = "e-no";
+        no.textContent = "E" + ep.n;
+        var h2 = document.createElement("h2");
+        h2.className = "e-title";
+        h2.textContent = ep.title;
+        head.appendChild(no); head.appendChild(h2);
+        s.appendChild(head);
+
+        var stage = document.createElement("div");
+        stage.className = "stage";
+        var v = document.createElement("video");
+        v.src = MEDIA + ep.file;
+        v.poster = MEDIA + ep.file.replace(".mp4", ".jpg");
+        v.controls = true; v.preload = "none"; v.playsInline = true;
+        v.setAttribute("aria-label", ep.title);
+        stage.appendChild(v);
+        s.appendChild(stage);
+
+        if (ep.verse) {
+          var p = document.createElement("p");
+          p.className = "verse";
+          p.textContent = ep.verse;
+          s.appendChild(p);
+        }
+
+        var f = document.createElement("div");
+        f.className = "facts";
+        f.innerHTML =
+          '<div><span class="k">Drawn in</span><b>iFlipbook</b></div>' +
+          '<div><span class="k">Walked through</span><b>' + (LOOK[ep.look] || ep.look) + '</b> · Coordigo</div>' +
+          '<div><span class="k">Playing</span><b>' + ep.song.title + '</b></div>';
+        s.appendChild(f);
+
+        host.appendChild(s);
+      });
+
+      var vids = host.querySelectorAll("video");
+      vids.forEach(function (v) {
+        v.addEventListener("play", function () {
+          vids.forEach(function (o) { if (o !== v) o.pause(); });
+        });
+      });
+
+      document.querySelectorAll("a.email").forEach(function (a) {
+        a.href = "mailto:" + a.dataset.u + String.fromCharCode(64) + a.dataset.d;
+      });
+    })();
+  </script>
+</body>
+</html>
