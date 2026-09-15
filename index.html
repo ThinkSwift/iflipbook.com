@@ -75,10 +75,8 @@
     .strip a:hover img{transform:translateY(-2px);border-color:var(--ac-soft)}
     .strip .s-t{font-size:12.5px;line-height:1.35;margin-top:7px;color:var(--muted)}
 
-    .appline{display:flex;align-items:center;gap:14px;margin:22px 0 0;padding-top:18px;
-      border-top:1px solid var(--line)}
-    .appline img{width:52px;height:52px;border-radius:12px;border:1px solid var(--line);display:block;
-      box-shadow:0 4px 12px rgba(0,0,0,.35)}      /* 프리뷰 영상(2.3MB)은 강등된 자리에 무겁다 — 아이콘으로 */
+    /* 아이콘은 위 나브에 한 번이면 족하다 — 같은 그림을 두 번 걸지 않는다 (founder 2026-09-15) */
+    .appline{margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line)}
     .appline p{margin:0;font-size:13.5px;line-height:1.6;color:var(--muted)}
     .appline a{color:var(--ac);text-decoration:none;font-weight:600;white-space:nowrap}
     .appline a:hover{text-decoration:underline;text-underline-offset:3px}
@@ -130,8 +128,6 @@
     <div class="strip" id="strip"></div>
 
     <div class="appline">
-      <a href="https://apps.apple.com/app/id6759637879?ct=web-iflipbook" target="_blank" rel="noopener"
-        aria-label="iFlipbook on the App Store"><img src="/media/icon.png" alt="iFlipbook"></a>
       <p><span data-t="appLine">Every frame above was drawn by hand, in iFlipbook.</span>
         <a href="https://apps.apple.com/app/id6759637879?ct=web-iflipbook" target="_blank" rel="noopener" data-t="appLink">See the app &rarr;</a></p>
     </div>
