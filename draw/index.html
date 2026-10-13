@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Make a Flipbook Online — Draw Three Frames, Watch Them Move · iFlipbook</title>
+  <meta name="description" content="Draw three frames in your browser and watch them loop. Save it as a GIF or send it as a link. No install — Otto shows you how.">
+  <meta name="theme-color" content="#0b0f1a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://iflipbook.com/draw/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="iFlipbook">
+  <meta property="og:title" content="Make a flipbook — three frames, one loop">
+  <meta property="og:description" content="Draw three frames and watch them move. Otto shows you how.">
+  <meta property="og:url" content="https://iflipbook.com/draw/">
+  <meta property="og:image" content="https://iflipbook.com/draw/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Otto points at a page where a ball is drawn three times, each over a faint copy of the last.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="draw.css">
+  <link rel="modulepreload" href="otto-data.js">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Make a flipbook","url":"https://iflipbook.com/draw/","applicationCategory":"DesignApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Draw three frames in your browser and watch them loop. Save a GIF or send it as a link.","publisher":{"@id":"https://swiftian.com/#org"}}</script>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="home" href="/"><img src="/media/icon.png" alt="" width="32" height="32"><span class="name">iFlipbook</span></a>
+    </nav>
+
+    <h1>Make a flipbook</h1>
+    <p class="lede">Three drawings, one loop.</p>
+
+    <main class="grid">
+    <section id="received" class="received" hidden>
+      <p class="kicker">A flipbook for you</p>
+      <div class="sheet"><canvas id="rx" role="img" aria-label="A flipbook, playing. Tap to pause."></canvas></div>
+      <button id="back" class="primary wide" type="button">Draw one back</button>
+    </section>
+
+    <section id="lesson" class="lesson" hidden>
+      <p class="kicker">Otto goes first</p>
+      <canvas id="otto" role="img" aria-label="Otto waves, draws a ball three times, each over a faint copy of the last, and plays it: the ball bounces."></canvas>
+    </section>
+
+    <section id="studio" class="studio" hidden>
+      <p class="kicker">Your turn</p>
+      <div class="sheet">
+        <canvas id="pad" aria-label="Drawing page"></canvas>
+        <div class="frames" role="group" aria-label="Frames">
+          <button class="tab" type="button" aria-label="Frame 1" aria-current="true"><canvas></canvas><span>1</span></button>
+          <button class="tab" type="button" aria-label="Frame 2"><canvas></canvas><span>2</span></button>
+          <button class="tab" type="button" aria-label="Frame 3"><canvas></canvas><span>3</span></button>
+          <button id="play" class="play" type="button" aria-pressed="false">
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+            <svg class="i-stop" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor"/></svg>
+            <span class="lbl">Play</span>
+          </button>
+        </div>
+        <div class="tools" role="toolbar" aria-label="Tools">
+          <button class="tool" type="button" data-tool="pen" aria-label="Pen" aria-pressed="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.6L16.6 4a2 2 0 0 1 2.8 0l.6.6a2 2 0 0 1 0 2.8L8.6 18.8z"/><path d="M14.5 6.1l3.4 3.4"/></svg>
+          </button>
+          <button class="tool" type="button" data-tool="eraser" aria-label="Eraser" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 19.5h11"/><path d="M4.6 14.6 13.8 5.4a2 2 0 0 1 2.8 0l3.4 3.4a2 2 0 0 1 0 2.8l-7.9 7.9H8.5l-3.9-3.9a.7.7 0 0 1 0-1z"/><path d="m9.5 9.7 6.2 6.2"/></svg>
+          </button>
+          <span class="sep" aria-hidden="true"></span>
+          <button id="undo" class="tool" type="button" aria-label="Undo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+          </button>
+          <button id="clear" class="tool" type="button" aria-label="Clear this frame">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M9.5 7V4.5h5V7"/><path d="M6 7l1 13h10l1-13"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="leave">
+        <button id="gif" class="primary" type="button">Save GIF</button>
+        <button id="send" class="primary ghost" type="button">Send</button>
+      </div>
+    </section>
+    </main>
+
+    <section class="app">
+      <p>Keep it in iFlipbook — more frames, Apple Pencil, a stage to play on.</p>
+      <a class="store" href="https://apps.apple.com/app/id6759637879?ct=web-if-draw" target="_blank" rel="noopener">Get iFlipbook</a>
+    </section>
+  </div>
+
+  <footer>
+    <span>&copy; 2026 iFlipbook &middot; <a href="https://swiftian.com">Swiftian Inc.</a></span>
+    <span class="sep">&middot;</span><a href="/support/">Support</a><span class="sep">&middot;</span><a href="/privacy/">Privacy</a>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p class="nojs">Drawing here needs JavaScript.</p></noscript>
+  <script type="module" src="draw.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "19910af39e1b43edb0af1b9e65939b36"}'></script>
+</body>
+</html>

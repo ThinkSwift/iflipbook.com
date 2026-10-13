@@ -1,0 +1,82 @@
+:root{--bg:#0b0f1a;--bg-2:#0e1422;--ink:#eef2ff;--muted:#9aa6c4;--line:rgba(255,255,255,.10);--ac:#22d3ee;--ac-soft:rgba(34,211,238,.4);
+  --paper:#fbf8f1;--card:#efe9dc;--pen:#1b1b1f;--btn:rgba(255,255,255,.06)}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:"Inter",-apple-system,system-ui,sans-serif;color:var(--ink);
+  background:radial-gradient(1100px 660px at 82% -12%, rgba(34,211,238,.14), transparent 60%),
+             radial-gradient(900px 600px at 0% 8%, rgba(129,140,248,.10), transparent 55%),
+             linear-gradient(180deg,var(--bg-2),var(--bg));
+  background-color:var(--bg);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+[hidden]{display:none!important}
+.wrap{width:100%;max-width:640px;margin:0 auto;padding:0 16px}
+nav{display:flex;align-items:center;padding:22px 0 4px}
+nav .home{display:flex;align-items:center;gap:11px;color:inherit;text-decoration:none}
+nav img{width:32px;height:32px;border-radius:8px;display:block}
+nav .name{font-family:"Space Grotesk";font-weight:700;font-size:18px}
+h1{font-family:"Space Grotesk";font-weight:700;font-size:clamp(30px,7vw,44px);line-height:1.06;margin:26px 0 0;letter-spacing:-1px;
+  background:linear-gradient(100deg,#fff 30%,var(--ac) 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--muted);font-size:16px;margin:10px 0 0}
+.kicker{font-family:"Space Grotesk";font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+
+.lesson{margin:26px 0 0}
+.lesson canvas{display:block;width:100%;aspect-ratio:8/5;border-radius:20px;background:var(--card);cursor:default}
+
+.studio,.received{margin:30px 0 0}
+.studio{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.sheet{width:min(100%, 560px, max(280px, calc(100vh - 230px)));margin:0 auto}
+@supports (height:100svh){.sheet{width:min(100%, 560px, max(280px, calc(100svh - 230px)))}}
+#pad,#rx{display:block;width:100%;aspect-ratio:1;border-radius:18px;background:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#pad{touch-action:none;cursor:crosshair}
+#pad.erasing{cursor:cell}
+#rx{cursor:pointer}
+
+button{font:inherit;color:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:disabled{opacity:.35;cursor:default}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+
+.frames{display:flex;align-items:center;gap:8px;margin:12px 0 0}
+.tab{position:relative;width:52px;height:52px;padding:0;border-radius:12px;border:1px solid var(--line);background:var(--paper);overflow:hidden;cursor:pointer;flex:0 0 auto}
+.tab canvas{display:block;width:100%;height:100%}
+.tab span{position:absolute;left:6px;top:3px;font:600 12px "Space Grotesk",system-ui,sans-serif;color:rgba(27,27,31,.55)}
+.tab[aria-current="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--ac)}
+.play{margin-left:auto;display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 18px 0 14px;border-radius:999px;border:0;
+  background:var(--ac);color:#04131a;font-weight:600;font-size:15px;cursor:pointer}
+.play svg{width:20px;height:20px}
+.play .i-stop,.play[aria-pressed="true"] .i-play{display:none}
+.play[aria-pressed="true"] .i-stop{display:block}
+
+.tools{display:flex;align-items:center;gap:6px;margin:10px 0 0}
+.tool{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1px solid var(--line);background:var(--btn);cursor:pointer;padding:0}
+.tool svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tool[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tools .sep{width:1px;height:22px;background:var(--line);margin:0 4px}
+
+.leave{display:flex;gap:10px;width:min(100%,560px);margin:18px auto 0}
+.primary{flex:1;height:48px;border-radius:14px;border:0;background:#fff;color:#06091a;font-weight:600;font-size:15.5px;cursor:pointer}
+.primary.ghost{background:transparent;color:var(--ink);border:1px solid rgba(255,255,255,.28)}
+.primary.wide{display:block;width:min(100%,560px);margin:16px auto 0}
+
+.app{margin:40px 0 0;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.app p{margin:0;flex:1 1 240px;font-size:14.5px;line-height:1.55;color:var(--muted)}
+.store{display:inline-block;padding:11px 18px;border-radius:13px;background:var(--ac);color:#04131a;font-weight:600;text-decoration:none;white-space:nowrap}
+.store:hover{filter:brightness(1.08)}
+
+footer{text-align:center;font-size:13px;padding:42px 16px 32px;color:var(--muted)}
+footer a{color:var(--ac);text-decoration:none}
+footer a:hover{text-decoration:underline;text-underline-offset:3px}
+footer .sep{opacity:.35;margin:0 8px}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  background:var(--ink);color:var(--bg);font-weight:600;font-size:14px;padding:10px 16px;border-radius:999px;transition:opacity .2s,transform .2s}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.nojs{text-align:center;color:var(--muted)}
+
+/* Wide screens: Otto's lesson (or the flipbook you received) beside your page. */
+@media (min-width: 980px){
+  .wrap{max-width:1080px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;align-items:start}
+  .grid > .lesson,.grid > .received{grid-column:1;margin-top:30px}
+  .grid > .studio{grid-column:2;grid-row:1;margin-top:30px}
+  .received .sheet,.received .primary.wide{margin-left:0}
+}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
