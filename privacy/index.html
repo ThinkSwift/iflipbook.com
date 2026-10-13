@@ -69,12 +69,12 @@
 
   <main class="container">
     <h1>Privacy Policy</h1>
-    <p class="eff">Effective September 25, 2026 (iFlipbook 3.0) · iFlipbook is made by Swiftian Inc.</p>
+    <p class="eff">Effective October 2026 (iFlipbook 7.0) · iFlipbook is made by Swiftian Inc.</p>
 
     <p class="lede">
       iFlipbook works without an account. Your drawings, characters, and postcards live on
-      your device. The only things that leave it are a message you choose to send us, and
-      anonymous daily usage counts. We don't sell your data, we don't run ads, and we
+      your device. The only things that leave it are a message you choose to send us, anonymous
+      usage events, and crash reports. We don't sell your data, we don't run ads, and we
       don't embed cross-app tracking.
     </p>
 
@@ -100,8 +100,13 @@
         </tr>
         <tr>
           <td>Simply open the app</td>
-          <td>An anonymous install ID with counts of sessions and feature uses (for example "exported 3 times"), by day. The app also asks our server, with the same ID, whether we have replied to your feedback.</td>
-          <td>Apple's CloudKit; our proxy server</td>
+          <td>An anonymous install ID with the features you use and when (for example "added a page", "finished the first lesson"), plus app version, build, OS version, and language; and counts of sessions and feature uses by day. The app also asks our server, with the same ID, whether we have replied to your feedback. Never your drawings or words.</td>
+          <td>Our proxy server; Apple's CloudKit</td>
+        </tr>
+        <tr>
+          <td>The app crashes, freezes, or runs slowly</td>
+          <td>Apple's MetricKit report (where in the app it happened, device model, OS and app version) — only if you share analytics with app developers in your device's settings</td>
+          <td>Our proxy server</td>
         </tr>
         <tr>
           <td>Share or save an export</td>
@@ -121,14 +126,14 @@
         <strong>About the anonymous ID.</strong> When you first launch the app it generates a
         random identifier and stores it in the device keychain. It isn't your Apple Account,
         your name, or your device's advertising identifier, and it isn't linked to your
-        identity. It exists so replies to your feedback come back to you, and so usage counts
-        aren't double-counted. We do not use it to track you across other apps or websites.
+        identity. It exists so replies to your feedback come back to you, and so usage isn't
+        double-counted. We do not use it to track you across other apps or websites.
       </p>
     </div>
 
     <h2>No public content</h2>
     <p>
-      iFlipbook 3.0 has no gallery, feed, or other place where one person's work is shown to
+      iFlipbook has no gallery, feed, or other place where one person's work is shown to
       others. Nothing you draw is published by the app. If you published to the gallery in an
       earlier version and want those posts removed, write to us and we'll delete them.
     </p>
@@ -144,14 +149,15 @@
     <h2>Who processes data for us</h2>
     <ul>
       <li><strong>Apple</strong> — CloudKit stores the daily usage counts; the App Store handles purchases.</li>
-      <li><strong>Cloudflare</strong> — runs the small proxy server that feedback messages pass through.</li>
+      <li><strong>Cloudflare</strong> — runs the small proxy server that feedback messages, usage events, and crash reports pass through, and stores the events and reports.</li>
     </ul>
     <p>These providers process data on our behalf. We do not sell or rent data to anyone.</p>
 
     <h2>How long things are kept</h2>
     <ul>
       <li><strong>Feedback messages</strong> — kept while the conversation is useful, then removed.</li>
-      <li><strong>Usage counts</strong> — aggregate daily counts, kept to understand which features people actually use.</li>
+      <li><strong>Usage events and counts</strong> — kept to understand which features people actually use; events are deleted after about three months.</li>
+      <li><strong>Crash reports</strong> — kept until the problem is fixed, then removed.</li>
     </ul>
 
     <h2>Deleting your data</h2>
