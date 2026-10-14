@@ -117,16 +117,14 @@
       <span class="name">iFlipbook</span>
       <button class="lang-toggle hide" id="langToggle" type="button"></button>
     </nav>
-
-    <p class="kicker" data-t="kicker">A blog from the iFlipbook studio</p>
     <h1>Otto&rsquo;s Flipbook Diary</h1>
-    <p class="intro" data-t="intro">Otto keeps a diary the only way he knows how — as tiny hand-drawn flipbook loops. A few frames, a little story, every episode.</p>
+    <p class="intro" data-t="intro">Otto keeps a diary the only way he knows how — as tiny hand-drawn flipbook loops.</p>
     <p class="intro"><a href="/draw/" style="color:inherit;font-weight:600">Make a flipbook with Otto &rarr;</a></p>
 
     <div class="stage"><video id="hero" autoplay muted loop playsinline preload="metadata"
       src="https://media.coordigo.com/postcards/v2/01-medium-20009.mp4"
       poster="https://media.coordigo.com/postcards/v2/01-medium-20009.jpg"></video></div>
-    <p class="heroline"><span data-t="heroLine">Postcards, Volume One &mdash; Otto and Momo pass through six places, twelve seconds each.</span>
+    <p class="heroline"><span data-t="heroLine">Otto and Momo pass through six places, twelve seconds each.</span>
       <a href="/postcards/" data-t="heroLink">Watch the six &rarr;</a></p>
     <p class="heroline"><span data-t="coPlace">The places are landscapes from Coordigo, where you trace them line by line.</span>
       <a href="https://coordigo.com/?ct=web-if-co">Coordigo &rarr;</a></p>
@@ -139,15 +137,6 @@
     </div>
 
     <!-- diary:start -->
-    <section class="blog">
-      <h2>Vol. 1</h2>
-
-      <div class="post">
-        <div class="p-ep">E7</div>
-        <div class="p-title" data-t="ep1t">Otto is warming up</div>
-        <div class="p-note" data-t="ep1n">The first entry is on the drawing desk right now. It will appear here — quietly — when the ink dries.</div>
-      </div>
-    </section>
     <!-- diary:end -->
 
   </div>
@@ -175,15 +164,37 @@
       img.src = PC + ep.file.replace(".mp4", ".jpg");
       img.alt = ep.title; img.loading = "lazy";
       var t = document.createElement("div");
-      t.className = "s-t"; t.textContent = "E" + ep.n + " · " + ep.title;
+      t.className = "s-t"; t.textContent = ep.title;
       a.appendChild(img); a.appendChild(t); strip.appendChild(a);
     });
   })();
   </script>
 
   <script>
-  var I18N = {"ko": {"name": "한국어", "kicker": "iFlipbook 스튜디오의 블로그", "intro": "오토는 자기가 아는 유일한 방식으로 일기를 씁니다 — 손으로 그린 작은 플립북 루프로요. 매화 몇 장의 프레임, 작은 이야기 하나.", "ep1t": "오토가 몸을 풀고 있어요", "ep1n": "첫 화가 지금 작화대 위에 있습니다. 잉크가 마르면 — 조용히 — 여기 올라옵니다.", "moreTitle": "우리가 만드는 것들", "privacy": "개인정보 처리방침", "swDesc": "칠프렌즈 코믹스, 낭독 연재", "pyDesc": "한 번에 타일 하나", "coDesc": "손끝에서 풍경이 떠오른다", "heroLine": "엽서 1권 — 오토와 모모가 여섯 곳을 지나간다, 한 편에 12초.", "heroLink": "여섯 편 보기 →", "appLine": "위의 모든 프레임은 iFlipbook 에서 손으로 그렸다.", "appLink": "앱 보기 →", "coPlace": "그 장소들은 Coordigo의 풍경입니다. 선을 하나씩 따라 그리면 떠오르는 곳들이에요."}, "ja": {"name": "日本語", "kicker": "iFlipbook スタジオのブログ", "intro": "オットーは自分の知っている唯一の方法で日記をつけます — 手描きの小さなパラパラ漫画ループで。毎話、数コマとささやかな物語。", "ep1t": "オットー、準備運動中", "ep1n": "第1話はいま作画机の上。インクが乾いたら — ひっそりと — ここに載ります。", "moreTitle": "私たちの作品", "privacy": "プライバシー", "swDesc": "チルフレンズ・コミックス朗読連載", "pyDesc": "タイルひとつずつ", "coDesc": "指の先から風景が現れる", "heroLine": "絵はがき第1巻 — オットーとモモが六つの場所を通り過ぎる。一編12秒。", "heroLink": "六編を見る →", "appLine": "上のコマはすべて iFlipbook で手描きしたものです。", "appLink": "アプリを見る →", "coPlace": "その場所は Coordigo の風景。線を一本ずつなぞると現れる景色です。"}, "zh-Hans": {"name": "简体中文", "kicker": "来自 iFlipbook 工作室的博客", "intro": "Otto 用他唯一会的方式写日记——手绘的小小翻页动画。每一集，几帧画面，一个小故事。", "ep1t": "Otto 正在热身", "ep1n": "第一篇正躺在画桌上。等墨水干了，它会悄悄出现在这里。", "moreTitle": "我们的作品", "privacy": "隐私政策", "swDesc": "Chillfriends 漫画朗读连载", "pyDesc": "一次一块瓷砖", "coDesc": "风景在指尖浮现", "heroLine": "明信片第一卷 —— 奥托和莫莫走过六个地方，每篇十二秒。", "heroLink": "看这六篇 →", "appLine": "上面每一帧都是在 iFlipbook 里手绘的。", "appLink": "看看这个应用 →", "coPlace": "这些地方是 Coordigo 里的风景，一笔一笔描出来的。"}, "zh-Hant": {"name": "繁體中文", "kicker": "來自 iFlipbook 工作室的部落格", "intro": "Otto 用他唯一會的方式寫日記——手繪的小小翻頁動畫。每一集,幾格畫面,一個小故事。", "ep1t": "Otto 正在熱身", "ep1n": "第一篇正躺在畫桌上。等墨水乾了,它會悄悄出現在這裡。", "moreTitle": "我們的作品", "privacy": "隱私權政策", "swDesc": "Chillfriends 漫畫朗讀連載", "pyDesc": "一次一塊瓷磚", "coDesc": "風景在指尖浮現", "heroLine": "明信片第一卷 —— 奧托和莫莫走過六個地方，每篇十二秒。", "heroLink": "看這六篇 →", "appLine": "上面每一格都是在 iFlipbook 裡手繪的。", "appLink": "看看這個應用 →", "coPlace": "這些地方是 Coordigo 裡的風景，一筆一筆描出來的。"}, "es": {"name": "Español", "kicker": "Un blog del estudio iFlipbook", "intro": "Otto escribe su diario de la única forma que conoce: pequeños bucles de animación dibujados a mano. Unos cuadros y una pequeña historia en cada episodio.", "ep1t": "Otto está calentando", "ep1n": "La primera entrada está ahora mismo en la mesa de dibujo. Aparecerá aquí — sin ruido — cuando se seque la tinta.", "moreTitle": "Más de nosotros", "privacy": "Privacidad", "swDesc": "cómics de Chillfriends, leídos en voz alta", "pyDesc": "una casilla a la vez", "coDesc": "un paisaje aparece bajo tu dedo", "heroLine": "Postales, volumen uno: Otto y Momo pasan por seis lugares, doce segundos cada uno.", "heroLink": "Ver las seis →", "appLine": "Cada cuadro de arriba se dibujó a mano, en iFlipbook.", "appLink": "Ver la app →", "coPlace": "Los lugares son paisajes de Coordigo, donde los trazas línea a línea."}, "fr": {"name": "Français", "kicker": "Un blog du studio iFlipbook", "intro": "Otto tient son journal de la seule façon qu'il connaisse : de petites boucles de flipbook dessinées à la main. Quelques images, une petite histoire, à chaque épisode.", "ep1t": "Otto s'échauffe", "ep1n": "La première entrée est sur la table à dessin. Elle apparaîtra ici — discrètement — quand l'encre aura séché.", "moreTitle": "Nos créations", "privacy": "Confidentialité", "swDesc": "les BD Chillfriends, lues à voix haute", "pyDesc": "une tuile à la fois", "coDesc": "un paysage apparaît sous le doigt", "heroLine": "Cartes postales, volume un — Otto et Momo traversent six lieux, douze secondes chacun.", "heroLink": "Voir les six →", "appLine": "Chaque image ci-dessus a été dessinée à la main, dans iFlipbook.", "appLink": "Voir l'app →", "coPlace": "Ces lieux sont des paysages de Coordigo, qu'on trace ligne après ligne."}, "de": {"name": "Deutsch", "kicker": "Ein Blog aus dem iFlipbook-Studio", "intro": "Otto führt Tagebuch auf die einzige Art, die er kennt — als kleine handgezeichnete Daumenkino-Loops. Ein paar Bilder, eine kleine Geschichte, jede Folge.", "ep1t": "Otto wärmt sich auf", "ep1n": "Der erste Eintrag liegt gerade auf dem Zeichentisch. Er erscheint hier — ganz leise — sobald die Tinte trocken ist.", "moreTitle": "Mehr von uns", "privacy": "Datenschutz", "swDesc": "Chillfriends-Comics, vorgelesen", "pyDesc": "Stein für Stein", "coDesc": "eine Landschaft kommt unter dem Finger hervor", "heroLine": "Postkarten, Band eins — Otto und Momo ziehen durch sechs Orte, je zwölf Sekunden.", "heroLink": "Alle sechs ansehen →", "appLine": "Jedes Bild oben ist von Hand gezeichnet, in iFlipbook.", "appLink": "Zur App →", "coPlace": "Die Orte sind Landschaften aus Coordigo, wo du sie Linie für Linie nachzeichnest."}, "pt": {"name": "Português", "kicker": "Um blog do estúdio iFlipbook", "intro": "Otto escreve seu diário do único jeito que sabe — pequenos loops de flipbook desenhados à mão. Alguns quadros e uma pequena história em cada episódio.", "ep1t": "Otto está aquecendo", "ep1n": "A primeira entrada está na mesa de desenho agora. Vai aparecer aqui — de mansinho — quando a tinta secar.", "moreTitle": "Mais do estúdio", "privacy": "Privacidade", "swDesc": "quadrinhos Chillfriends, lidos em voz alta", "pyDesc": "um bloco de cada vez", "coDesc": "uma paisagem aparece sob o dedo", "heroLine": "Cartões-postais, volume um — Otto e Momo passam por seis lugares, doze segundos cada.", "heroLink": "Ver os seis →", "appLine": "Cada quadro acima foi desenhado à mão, no iFlipbook.", "appLink": "Ver o app →", "coPlace": "Os lugares são paisagens do Coordigo, onde você os traça linha a linha."}, "ru": {"name": "Русский", "kicker": "Блог студии iFlipbook", "intro": "Отто ведёт дневник единственным известным ему способом — крошечными рисованными флипбук-петлями. Несколько кадров и маленькая история в каждом выпуске.", "ep1t": "Отто разминается", "ep1n": "Первая запись сейчас на рисовальном столе. Она появится здесь — тихо — когда высохнут чернила.", "moreTitle": "Ещё от нас", "privacy": "Конфиденциальность", "swDesc": "комиксы Chillfriends, озвученные вслух", "pyDesc": "по плитке за раз", "coDesc": "пейзаж проступает под пальцем", "heroLine": "Открытки, том первый — Отто и Момо проходят шесть мест, по двенадцать секунд.", "heroLink": "Смотреть все шесть →", "appLine": "Каждый кадр выше нарисован от руки, в iFlipbook.", "appLink": "Открыть приложение →", "coPlace": "Эти места — пейзажи из Coordigo, где их обводят линию за линией."}};
-  var EN = {"kicker": "A blog from the iFlipbook studio", "intro": "Otto keeps a diary the only way he knows how — as tiny hand-drawn flipbook loops. A few frames, a little story, every episode.", "ep1t": "Otto is warming up", "ep1n": "The first entry is on the drawing desk right now. It will appear here — quietly — when the ink dries.", "moreTitle": "More from us", "privacy": "Privacy", "swDesc": "chillfriends comics, read aloud", "pyDesc": "one tile at a time", "coDesc": "a landscape comes up under your finger", "heroLine": "Postcards, Volume One — Otto and Momo pass through six places, twelve seconds each.", "heroLink": "Watch the six →", "appLine": "Every frame above was drawn by hand, in iFlipbook.", "appLink": "See the app →", "coPlace": "The places are landscapes from Coordigo, where you trace them line by line."};
+  var I18N = {
+    "ko": {"name": "한국어", "intro": "오토는 자기가 아는 유일한 방식으로 일기를 씁니다 — 손으로 그린 작은 플립북 루프로요.", "moreTitle": "우리가 만드는 것들", "privacy": "개인정보 처리방침", "swDesc": "칠프렌즈 코믹스, 낭독 연재", "pyDesc": "한 번에 타일 하나", "coDesc": "손끝에서 풍경이 떠오른다", "heroLine": "오토와 모모가 여섯 곳을 지나간다, 한 편에 12초.", "heroLink": "여섯 편 보기 →", "appLine": "위의 모든 프레임은 iFlipbook 에서 손으로 그렸다.", "appLink": "앱 보기 →", "coPlace": "그 장소들은 Coordigo의 풍경입니다. 선을 하나씩 따라 그리면 떠오르는 곳들이에요."},
+    "ja": {"name": "日本語", "intro": "オットーは自分の知っている唯一の方法で日記をつけます — 手描きの小さなパラパラ漫画ループで。", "moreTitle": "私たちの作品", "privacy": "プライバシー", "swDesc": "チルフレンズ・コミックス朗読連載", "pyDesc": "タイルひとつずつ", "coDesc": "指の先から風景が現れる", "heroLine": "オットーとモモが六つの場所を通り過ぎる。一編12秒。", "heroLink": "六編を見る →", "appLine": "上のコマはすべて iFlipbook で手描きしたものです。", "appLink": "アプリを見る →", "coPlace": "その場所は Coordigo の風景。線を一本ずつなぞると現れる景色です。"},
+    "zh-Hans": {"name": "简体中文", "intro": "Otto 用他唯一会的方式写日记——手绘的小小翻页动画。", "moreTitle": "我们的作品", "privacy": "隐私政策", "swDesc": "Chillfriends 漫画朗读连载", "pyDesc": "一次一块瓷砖", "coDesc": "风景在指尖浮现", "heroLine": "奥托和莫莫走过六个地方，每篇十二秒。", "heroLink": "看这六篇 →", "appLine": "上面每一帧都是在 iFlipbook 里手绘的。", "appLink": "看看这个应用 →", "coPlace": "这些地方是 Coordigo 里的风景，一笔一笔描出来的。"},
+    "zh-Hant": {"name": "繁體中文", "intro": "Otto 用他唯一會的方式寫日記——手繪的小小翻頁動畫。", "moreTitle": "我們的作品", "privacy": "隱私權政策", "swDesc": "Chillfriends 漫畫朗讀連載", "pyDesc": "一次一塊瓷磚", "coDesc": "風景在指尖浮現", "heroLine": "奧托和莫莫走過六個地方，每篇十二秒。", "heroLink": "看這六篇 →", "appLine": "上面每一格都是在 iFlipbook 裡手繪的。", "appLink": "看看這個應用 →", "coPlace": "這些地方是 Coordigo 裡的風景，一筆一筆描出來的。"},
+    "es": {"name": "Español", "intro": "Otto escribe su diario de la única forma que conoce: pequeños bucles de animación dibujados a mano.", "moreTitle": "Más de nosotros", "privacy": "Privacidad", "swDesc": "cómics de Chillfriends, leídos en voz alta", "pyDesc": "una casilla a la vez", "coDesc": "un paisaje aparece bajo tu dedo", "heroLine": "Otto y Momo pasan por seis lugares, doce segundos cada uno.", "heroLink": "Ver las seis →", "appLine": "Cada cuadro de arriba se dibujó a mano, en iFlipbook.", "appLink": "Ver la app →", "coPlace": "Los lugares son paisajes de Coordigo, donde los trazas línea a línea."},
+    "fr": {"name": "Français", "intro": "Otto tient son journal de la seule façon qu'il connaisse : de petites boucles de flipbook dessinées à la main.", "moreTitle": "Nos créations", "privacy": "Confidentialité", "swDesc": "les BD Chillfriends, lues à voix haute", "pyDesc": "une tuile à la fois", "coDesc": "un paysage apparaît sous le doigt", "heroLine": "Otto et Momo traversent six lieux, douze secondes chacun.", "heroLink": "Voir les six →", "appLine": "Chaque image ci-dessus a été dessinée à la main, dans iFlipbook.", "appLink": "Voir l'app →", "coPlace": "Ces lieux sont des paysages de Coordigo, qu'on trace ligne après ligne."},
+    "de": {"name": "Deutsch", "intro": "Otto führt Tagebuch auf die einzige Art, die er kennt — als kleine handgezeichnete Daumenkino-Loops.", "moreTitle": "Mehr von uns", "privacy": "Datenschutz", "swDesc": "Chillfriends-Comics, vorgelesen", "pyDesc": "Stein für Stein", "coDesc": "eine Landschaft kommt unter dem Finger hervor", "heroLine": "Otto und Momo ziehen durch sechs Orte, je zwölf Sekunden.", "heroLink": "Alle sechs ansehen →", "appLine": "Jedes Bild oben ist von Hand gezeichnet, in iFlipbook.", "appLink": "Zur App →", "coPlace": "Die Orte sind Landschaften aus Coordigo, wo du sie Linie für Linie nachzeichnest."},
+    "pt": {"name": "Português", "intro": "Otto escreve seu diário do único jeito que sabe — pequenos loops de flipbook desenhados à mão.", "moreTitle": "Mais do estúdio", "privacy": "Privacidade", "swDesc": "quadrinhos Chillfriends, lidos em voz alta", "pyDesc": "um bloco de cada vez", "coDesc": "uma paisagem aparece sob o dedo", "heroLine": "Otto e Momo passam por seis lugares, doze segundos cada.", "heroLink": "Ver os seis →", "appLine": "Cada quadro acima foi desenhado à mão, no iFlipbook.", "appLink": "Ver o app →", "coPlace": "Os lugares são paisagens do Coordigo, onde você os traça linha a linha."},
+    "ru": {"name": "Русский", "intro": "Отто ведёт дневник единственным известным ему способом — крошечными рисованными флипбук-петлями.", "moreTitle": "Ещё от нас", "privacy": "Конфиденциальность", "swDesc": "комиксы Chillfriends, озвученные вслух", "pyDesc": "по плитке за раз", "coDesc": "пейзаж проступает под пальцем", "heroLine": "Отто и Момо проходят шесть мест, по двенадцать секунд.", "heroLink": "Смотреть все шесть →", "appLine": "Каждый кадр выше нарисован от руки, в iFlipbook.", "appLink": "Открыть приложение →", "coPlace": "Эти места — пейзажи из Coordigo, где их обводят линию за линией."}
+  };
+  var EN = {
+    "intro": "Otto keeps a diary the only way he knows how — as tiny hand-drawn flipbook loops.",
+    "moreTitle": "More from us",
+    "privacy": "Privacy",
+    "swDesc": "chillfriends comics, read aloud",
+    "pyDesc": "one tile at a time",
+    "coDesc": "a landscape comes up under your finger",
+    "heroLine": "Otto and Momo pass through six places, twelve seconds each.",
+    "heroLink": "Watch the six →",
+    "appLine": "Every frame above was drawn by hand, in iFlipbook.",
+    "appLink": "See the app →",
+    "coPlace": "The places are landscapes from Coordigo, where you trace them line by line."
+  };
   function detect(){
     var langs = navigator.languages || [navigator.language || "en"];
     for (var i=0;i<langs.length;i++){
