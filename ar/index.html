@@ -291,6 +291,14 @@
     .lead { max-width: 40em; }
     :lang(ko) h1, :lang(ko) .hook, :lang(zh-Hans) h1, :lang(zh-Hant) h1 { word-break: keep-all; overflow-wrap: break-word; }
   </style>
+<style id="site-hints">
+  /* site buttons: own icon, name, then what is there (founder 2026-11-04, RDM-sites-button-hints) */
+  .sites .site{width:300px;max-width:100%}
+  .site .hints{margin-left:auto;display:flex;gap:4px;padding-left:12px}
+  .site .hints img{display:block;width:32px;height:32px;border-radius:6px}
+  .site .hints img.px{image-rendering:pixelated;border-radius:0}
+  @media (max-width:640px){ .sites .site{width:100%;flex:1 1 100%} }
+</style>
 </head>
 <body>
   <div class="container"><nav class="tabs-bar" aria-label="iFlipbook"><img src="/media/icon.png" alt="" class="brand" width="32" height="32"><div class="tabs"><a class="tab" href="/ar/" aria-current="page">iFlipbook</a><a class="tab" href="/postcards/">Postcards</a></div></nav></div>
@@ -385,7 +393,7 @@
     </div>
   </section>
 
-  <section class="block sites-block"><div class="container"><section class="sites" aria-label="Also from Swiftian"><a class="site" href="https://coordigo.com/?ct=web-if-co"><img src="/assets/links/coordigo-32.png" srcset="/assets/links/coordigo-32.png 1x, /assets/links/coordigo-64.png 2x, /assets/links/coordigo-96.png 3x" width="32" height="32" alt=""><span>coordigo.com</span></a><a class="site" href="https://swiftian.com/?ct=web-if-sw"><img src="/assets/links/swiftian-32.png" srcset="/assets/links/swiftian-32.png 1x, /assets/links/swiftian-64.png 2x, /assets/links/swiftian-96.png 3x" width="32" height="32" alt=""><span>swiftian.com</span></a></section></div></section>
+  <section class="block sites-block"><div class="container"><section class="sites" aria-label="Also from Swiftian"><a class="site" href="https://coordigo.com/?ct=web-if-co"><img src="/assets/links/coordigo-32.png" srcset="/assets/links/coordigo-32.png 1x, /assets/links/coordigo-64.png 2x, /assets/links/coordigo-96.png 3x" width="32" height="32" alt=""><span>coordigo.com</span><span class="hints" aria-hidden="true"><img src="/assets/links/hint-co-242-32.png" srcset="/assets/links/hint-co-242-32.png 1x, /assets/links/hint-co-242-64.png 2x, /assets/links/hint-co-242-96.png 3x" width="32" height="32" alt=""><img src="/assets/links/hint-co-239-32.png" srcset="/assets/links/hint-co-239-32.png 1x, /assets/links/hint-co-239-64.png 2x, /assets/links/hint-co-239-96.png 3x" width="32" height="32" alt=""><img src="/assets/links/hint-co-237-32.png" srcset="/assets/links/hint-co-237-32.png 1x, /assets/links/hint-co-237-64.png 2x, /assets/links/hint-co-237-96.png 3x" width="32" height="32" alt=""></span></a><a class="site" href="https://swiftian.com/?ct=web-if-sw"><img src="/assets/links/swiftian-32.png" srcset="/assets/links/swiftian-32.png 1x, /assets/links/swiftian-64.png 2x, /assets/links/swiftian-96.png 3x" width="32" height="32" alt=""><span>swiftian.com</span><span class="hints" aria-hidden="true"><img src="/assets/links/hint-ea-32.png" srcset="/assets/links/hint-ea-32.png 1x, /assets/links/hint-ea-64.png 2x, /assets/links/hint-ea-96.png 3x" width="32" height="32" alt=""><img src="/assets/links/hint-cp-32.png" srcset="/assets/links/hint-cp-32.png 1x, /assets/links/hint-cp-64.png 2x, /assets/links/hint-cp-96.png 3x" width="32" height="32" alt=""><img src="/assets/links/hint-cf-32.png" srcset="/assets/links/hint-cf-32.png 1x, /assets/links/hint-cf-64.png 2x, /assets/links/hint-cf-96.png 3x" width="32" height="32" alt=""></span></a></section></div></section>
   <footer class="footer">
     <div class="container footer-row">
       <div>
