@@ -1,11 +1,13 @@
-// Three frames, onion skin, a loop — then a GIF to keep and a link to send.
+// Frames (three to start, + and − for up to twelve), onion skin, a loop — then a GIF to keep and a link to send.
 import { startLesson, INK, PAPER } from "./otto.js";
 import { encodeLink, decodeLink, GRID } from "./codec.js";
 import { encodeGIF, quantizeTwoTone, twoTonePalette } from "./gif.js";
 import { track } from "./track.js";
 
 const SIZE = GRID;          // drawing space: SIZE × SIZE
-const FRAMES = 3;
+// founder 2026-11-04 (RDM-if-site-frames-3-12): start at three, add and remove with + and −, three to twelve
+// (twelve is the most a link carries, codec.js MAX_FRAMES)
+const START = 3, MIN_FRAMES = 3, MAX_FRAMES = 12;
 const FPS = 7;
 const PEN_W = 7, ERASER_W = 34;
 const GIF_SIZE = 480;
@@ -93,10 +95,10 @@ function player(canvas, frames, onTap) {
 // ---------- the studio ----------
 const pad = $("#pad");
 const pctx = pad.getContext("2d");
-const caches = Array.from({ length: FRAMES }, layer);
+const caches = Array.from({ length: START }, layer);
 const scratch = layer();
 const S = {
-  frames: Array.from({ length: FRAMES }, () => []),
+  frames: Array.from({ length: START }, () => []),
   cur: 0, tool: "pen",
   playing: false, playIdx: 0, timer: 0,
   active: null, pointerId: null, rect: null, penSeen: false,
@@ -136,8 +138,20 @@ function paint() {
 let raf = 0;
 const requestPaint = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; paint(); }); };
 
-// Tabs with a small picture of each frame.
-const tabs = [...document.querySelectorAll(".tab")];
+// Tabs with a small picture of each frame, one per frame.
+const strip = $("#strip");
+let tabs = [];
+function buildTabs() {
+  strip.replaceChildren(...S.frames.map((_, i) => {
+    const t = document.createElement("button");
+    t.className = "tab"; t.type = "button"; t.setAttribute("aria-label", `Frame ${i + 1}`);
+    t.innerHTML = `<canvas></canvas><span>${i + 1}</span>`;
+    t.addEventListener("click", () => select(i));
+    return t;
+  }));
+  tabs = [...strip.children];
+  tabs.forEach((_, i) => thumb(i));
+}
 function thumb(i) {
   const c = tabs[i].querySelector("canvas");
   const px = Math.round(c.clientWidth * Math.min(3, devicePixelRatio || 1)) || 96;
@@ -160,6 +174,8 @@ function syncUI() {
   $("#play").disabled = !any;
   $("#undo").disabled = !S.frames[S.cur].length || S.playing;
   $("#clear").disabled = !S.frames[S.cur].length || S.playing;
+  $("#add").disabled = S.playing || S.frames.length >= MAX_FRAMES;
+  $("#remove").disabled = S.playing || S.frames.length <= MIN_FRAMES;
   $("#gif").disabled = !any;
   $("#send").disabled = !any;
   for (const b of document.querySelectorAll("[data-tool]")) b.setAttribute("aria-pressed", b.dataset.tool === S.tool ? "true" : "false");
@@ -180,6 +196,33 @@ function select(i) {
   S.cur = i;
   syncUI();
   requestPaint();
+  const t = tabs[i];                       // keep the chosen tab in the strip's view (scrollIntoView is off when embedded)
+  if (t && t.offsetLeft < strip.scrollLeft) strip.scrollLeft = t.offsetLeft - 4;
+  else if (t && t.offsetLeft + t.offsetWidth > strip.scrollLeft + strip.clientWidth) strip.scrollLeft = t.offsetLeft + t.offsetWidth - strip.clientWidth + 4;
+}
+
+// + puts a new page right after this one; − takes this one out.
+function addFrame() {
+  if (S.frames.length >= MAX_FRAMES) return;
+  stopPlay();
+  const L = layer();
+  L.c.width = L.c.height = pad.width;
+  S.frames.splice(S.cur + 1, 0, []);
+  caches.splice(S.cur + 1, 0, L);
+  buildTabs();
+  S.version++; scheduleLink();
+  select(S.cur + 1);
+  track("draw_frames", { frames: S.frames.length });
+}
+function removeFrame() {
+  if (S.frames.length <= MIN_FRAMES) return;
+  stopPlay();
+  S.frames.splice(S.cur, 1);
+  caches.splice(S.cur, 1);
+  buildTabs();
+  S.version++; scheduleLink();
+  select(Math.min(S.cur, S.frames.length - 1));
+  track("draw_frames", { frames: S.frames.length });
 }
 
 // ---------- drawing ----------
@@ -334,7 +377,8 @@ async function saveGIF() {
 }
 
 // ---------- wiring ----------
-tabs.forEach((t, i) => t.addEventListener("click", () => select(i)));
+$("#add").addEventListener("click", addFrame);
+$("#remove").addEventListener("click", removeFrame);
 $("#play").addEventListener("click", () => (S.playing ? stopPlay() : startPlay()));
 for (const b of document.querySelectorAll("[data-tool]")) b.addEventListener("click", () => { S.tool = b.dataset.tool; syncUI(); });
 $("#undo").addEventListener("click", () => { if (S.frames[S.cur].pop()) changed(S.cur); });
@@ -347,12 +391,15 @@ document.addEventListener("keydown", (e) => {
   if ($("#studio").hidden) return;
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "z") { e.preventDefault(); $("#undo").click(); return; }
   if (e.metaKey || e.ctrlKey || e.altKey) return;
-  if (e.key >= "1" && e.key <= String(FRAMES)) select(Number(e.key) - 1);
+  if (e.key >= "1" && e.key <= "9" && Number(e.key) <= S.frames.length) select(Number(e.key) - 1);
+  else if (e.key === "+" || e.key === "=") addFrame();
+  else if (e.key === "-") removeFrame();
   else if (e.key === " " && !e.target.closest("button, a")) { e.preventDefault(); $("#play").click(); }
   else if (e.key === "e") { S.tool = "eraser"; syncUI(); }
   else if (e.key === "p" || e.key === "b") { S.tool = "pen"; syncUI(); }
 });
 
+buildTabs();
 new ResizeObserver(() => { paint(); tabs.forEach((_, i) => thumb(i)); }).observe(pad);
 
 // ---------- open ----------
@@ -391,8 +438,11 @@ $("#back").addEventListener("click", () => {
   received = null;
   history.replaceState(null, "", location.pathname + location.search);
   S.reply = true;
-  S.frames = Array.from({ length: FRAMES }, () => []);
+  S.frames = Array.from({ length: START }, () => []);
+  caches.length = 0;
+  for (let i = 0; i < START; i++) { const L = layer(); L.c.width = L.c.height = pad.width; caches.push(L); }
   S.cur = 0;
+  buildTabs();
   caches.forEach((_, i) => changed(i));
   showStudio();
   $("#studio").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
