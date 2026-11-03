@@ -25,6 +25,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="draw.css">
+  <script>if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add("embed");</script>
+  <style>
+    /* inside iflipbook.com's home page: no header, footer or app line of its own, no page colour */
+    html.embed, html.embed body { background: transparent !important; }
+    html.embed body { min-height: 0 !important; }
+    html.embed .sheet { width: min(100%, 560px) !important; }
+    html.embed nav, html.embed footer, html.embed section.app, html.embed .wrap > h1, html.embed .wrap > .lede { display: none !important; }
+  </style>
   <link rel="modulepreload" href="otto-data.js">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Make a flipbook","url":"https://iflipbook.com/draw/","applicationCategory":"DesignApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Draw three frames in your browser and watch them loop. Save a GIF or send it as a link.","publisher":{"@id":"https://swiftian.com/#org"}}</script>
 </head>
