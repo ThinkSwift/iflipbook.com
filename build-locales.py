@@ -310,7 +310,7 @@ def patch_root():
 def write_sitemap():
     urls = [(f"{ORIGIN}/", "1.0", "weekly")]
     urls += [(f"{ORIGIN}/{p}/", "0.9", "weekly") for p, *_ in LOCALES]
-    urls += [(f"{ORIGIN}/support/", "0.5", "monthly"), (f"{ORIGIN}/privacy/", "0.3", "yearly")]
+    urls += [(f"{ORIGIN}/postcards/", "0.6", "monthly"), (f"{ORIGIN}/support/", "0.5", "monthly"), (f"{ORIGIN}/privacy/", "0.3", "yearly")]
     body = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{LASTMOD}</lastmod>\n"
         f"    <changefreq>{cf}</changefreq>\n    <priority>{pr}</priority>\n  </url>"
