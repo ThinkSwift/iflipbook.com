@@ -18,6 +18,8 @@ import html
 import os
 import pathlib
 import re
+import subprocess
+import sys
 
 APP_REPO = pathlib.Path.home() / "Projects/iFlipbook"
 META = APP_REPO / "fastlane/metadata"
@@ -255,10 +257,21 @@ def build(path, asc, hl, native, support, dl_small):
 '''
 
 
-# Site re-layout (founder 2026-11-03, RDM-sites-relayout): every page gets the tabs instead of its header and the two
-# site buttons before its footer. The same markup as the English root; keep the two in step.
-SITES_HTML = '<section class="sites" aria-label="Also from Swiftian"><a class="site" href="https://coordigo.com/?ct=web-if-co"><img src="/assets/links/coordigo-32.png" srcset="/assets/links/coordigo-32.png 1x, /assets/links/coordigo-64.png 2x, /assets/links/coordigo-96.png 3x" width="32" height="32" alt=""><span>coordigo.com</span></a><a class="site" href="https://swiftian.com/?ct=web-if-sw"><img src="/assets/links/swiftian-32.png" srcset="/assets/links/swiftian-32.png 1x, /assets/links/swiftian-64.png 2x, /assets/links/swiftian-96.png 3x" width="32" height="32" alt=""><span>swiftian.com</span></a></section>'
-RELAYOUT_CSS = '\n    /* iflipbook.com pages: tabs, App Store link, two site buttons (founder 2026-11-03, RDM-sites-relayout) */\n    nav.tabs-bar{display:flex;align-items:flex-end;gap:10px;padding:22px 0 0;border-bottom:1px solid rgba(255,255,255,.22)}\n    nav.tabs-bar img.brand{width:32px;height:32px;border-radius:8px;align-self:center;margin:0 4px 8px 0;display:block}\n    .tabs{display:flex;gap:6px}\n    .tab{min-width:118px;padding:10px 16px 9px;margin-bottom:-1px;text-align:center;text-decoration:none;color:var(--muted);\n      font:600 14px/1.2 "Space Grotesk","Inter",system-ui,sans-serif;background:rgba(255,255,255,.03);\n      border:1px solid rgba(255,255,255,.16);border-bottom:none;border-radius:10px 10px 0 0}\n    .tab:hover{color:var(--text);border-color:rgba(238,242,255,.75)}\n    .tab[aria-current]{color:var(--text);border-color:var(--text);border-top-width:3px;padding-top:8px}\n    nav.tabs-bar .lang-toggle{margin:0 0 8px auto}\n    .store-row{display:flex;justify-content:center;margin:36px 0 0}\n    .appstore{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:8px 18px 8px 10px;border-radius:14px;\n      background:#000;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.28);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}\n    .appstore:hover{border-color:#fff}\n    .appstore img{border-radius:7px;display:block}\n    .appstore span{display:flex;flex-direction:column;line-height:1.05}\n    .appstore small{font-size:10.5px;opacity:.85}\n    .appstore b{font-size:19px;font-weight:600;letter-spacing:-.01em}\n    .sites{display:flex;flex-wrap:wrap;gap:8px;margin:44px 0 0;padding-top:22px;border-top:1px solid var(--line)}\n    .site{box-sizing:border-box;width:168px;min-height:42px;display:flex;align-items:center;gap:8px;padding:3px 10px 3px 3px;\n      color:#0b0f1a;text-decoration:none;font:500 13.5px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef1f7;border:2px solid #eef1f7;border-radius:10px}\n    .site img{display:block;width:32px;height:32px;border-radius:6px;image-rendering:pixelated}\n    .site:hover{border-color:#0b0f1a}\n    @media (max-width:540px){\n      .tab{min-width:0;flex:1;padding:10px 6px 9px} .tabs{flex:1}\n      nav.tabs-bar{flex-wrap:wrap} nav.tabs-bar img.brand{order:-2;margin:0 auto 10px 0} nav.tabs-bar .lang-toggle{order:-1;margin:0 0 10px 0} .tabs{flex:1 1 100%}\n      .site{flex:1;width:auto}\n    }\n\n    .sites-block .sites{margin-top:0}\n'
+# Site re-layout (founder 2026-11-03, RDM-sites-relayout): every page gets the tabs instead of its header.
+# The same markup as the English root; keep the two in step.
+# The bottom site buttons are retired; the shared app menu sits above the tabs instead
+# (founder 2026-11-08, RDM-web-app-menu-all-sites). Its markup comes from swiftian.com's tools/app_menu.py.
+APP_MENU_TOOL = pathlib.Path.home() / "Projects/swiftian.com/tools/app_menu.py"
+
+
+def app_menu():
+    """(head tags, menu block) for this site, as swiftian.com's tool prints them."""
+    out = subprocess.run([sys.executable, str(APP_MENU_TOOL), "--site", "iflipbook.com", "--print"],
+                         capture_output=True, text=True, check=True).stdout.splitlines()
+    return out[0] + "\n" + out[1] + "\n", "\n".join(out[2:]).strip()
+
+
+RELAYOUT_CSS = '\n    /* iflipbook.com pages: tabs, App Store link, two site buttons (founder 2026-11-03, RDM-sites-relayout) */\n    nav.tabs-bar{display:flex;align-items:flex-end;gap:10px;padding:22px 0 0;border-bottom:1px solid rgba(255,255,255,.22)}\n    nav.tabs-bar img.brand{width:32px;height:32px;border-radius:8px;align-self:center;margin:0 4px 8px 0;display:block}\n    .tabs{display:flex;gap:6px}\n    .tab{min-width:118px;padding:10px 16px 9px;margin-bottom:-1px;text-align:center;text-decoration:none;color:var(--muted);\n      font:600 14px/1.2 "Space Grotesk","Inter",system-ui,sans-serif;background:rgba(255,255,255,.03);\n      border:1px solid rgba(255,255,255,.16);border-bottom:none;border-radius:10px 10px 0 0}\n    .tab:hover{color:var(--text);border-color:rgba(238,242,255,.75)}\n    .tab[aria-current]{color:var(--text);border-color:var(--text);border-top-width:3px;padding-top:8px}\n    nav.tabs-bar .lang-toggle{margin:0 0 8px auto}\n    .store-row{display:flex;justify-content:center;margin:36px 0 0}\n    .appstore{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:8px 18px 8px 10px;border-radius:14px;\n      background:#000;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.28);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}\n    .appstore:hover{border-color:#fff}\n    .appstore img{border-radius:7px;display:block}\n    .appstore span{display:flex;flex-direction:column;line-height:1.05}\n    .appstore small{font-size:10.5px;opacity:.85}\n    .appstore b{font-size:19px;font-weight:600;letter-spacing:-.01em}\n    @media (max-width:540px){\n      .tab{min-width:0;flex:1;padding:10px 6px 9px} .tabs{flex:1}\n      nav.tabs-bar{flex-wrap:wrap} nav.tabs-bar img.brand{order:-2;margin:0 auto 10px 0} nav.tabs-bar .lang-toggle{order:-1;margin:0 0 10px 0} .tabs{flex:1 1 100%}\n    }\n    .am{margin-top:18px}  /* room above the shared app menu (RDM-web-app-menu-all-sites) */\n'
 
 
 def relayout_nav(path):
@@ -268,11 +281,12 @@ def relayout_nav(path):
             f'<div class="tabs">{t}</div></nav>')
 
 
-def relayout(page, path):
-    page = re.sub(r'<header class="nav">.*?</header>', lambda _m: '<div class="container">' + relayout_nav(path) + '</div>', page, count=1, flags=re.S)
-    page = page.replace('\n  <footer class="footer">', f'\n  <section class="block sites-block"><div class="container">{SITES_HTML}</div></section>\n  <footer class="footer">', 1)
+def relayout(page, path, menu):
+    head, block = menu
+    page = re.sub(r'<header class="nav">.*?</header>', lambda _m: '<div class="container">' + block + relayout_nav(path) + '</div>', page, count=1, flags=re.S)
     i = page.index("</style>")
-    return page[:i] + RELAYOUT_CSS + page[i:]
+    page = page[:i] + RELAYOUT_CSS + page[i:]
+    return page.replace("</head>", head + "</head>", 1)
 
 
 def patch_root():
@@ -325,10 +339,11 @@ def main():
     if not META.is_dir():
         raise SystemExit(f"App Store metadata not found at {META}")
     patch_root()
+    menu = app_menu()
     for path, asc, hl, native, support, dl in LOCALES:
         out = SITE / path
         out.mkdir(exist_ok=True)
-        (out / "index.html").write_text(relayout(build(path, asc, hl, native, support, dl), path), encoding="utf-8")
+        (out / "index.html").write_text(relayout(build(path, asc, hl, native, support, dl), path, menu), encoding="utf-8")
         print(f"  /{path}/  <- {asc}")
     write_sitemap()
     print(f"{len(LOCALES)} locale pages + sitemap.xml + index.html hreflang")
