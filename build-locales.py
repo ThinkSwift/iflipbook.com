@@ -149,10 +149,10 @@ def build(path, asc, hl, native, support, dl_small):
   <link rel="canonical" href="{ORIGIN}/{path}/" />
   <meta name="apple-itunes-app" content="app-id={APPID}" />
 {alternates(path)}
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=20261103" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=20261103" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=20261103" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261103" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=20261108" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=20261108" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=20261108" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261108" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="iFlipbook" />
   <meta property="og:locale" content="{hl.replace("-", "_")}" />
