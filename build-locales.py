@@ -237,21 +237,10 @@ def build(path, asc, hl, native, support, dl_small):
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container footer-row">
-      <div>
-        © 2026 iFlipbook · <a href="https://swiftian.com" style="opacity:.85">Swiftian Inc.</a>
-        <nav class="langs" aria-label="Language">
+  <div class="container sf-langs"><nav class="langs" aria-label="Language">
         {language_nav(path)}
-        </nav>
-      </div>
-      <nav class="footer-links">
-        <a href="/support/">{e(support)}</a>
-        <a href="/privacy/">Privacy</a>
-        <a href="{STORE}" target="_blank" rel="noopener">App Store</a>
-      </nav>
-    </div>
-  </footer>
+        </nav></div>
+  {site_footer(path)}
 </body>
 </html>
 '''
@@ -262,6 +251,12 @@ def build(path, asc, hl, native, support, dl_small):
 # The bottom site buttons are retired; the shared app menu sits above the tabs instead
 # (founder 2026-11-08, RDM-web-app-menu-all-sites). Its markup comes from swiftian.com's tools/app_menu.py.
 APP_MENU_TOOL = pathlib.Path.home() / "Projects/swiftian.com/tools/app_menu.py"
+
+
+def site_footer(path):
+    """The footer all six sites share, in this page's language (founder 2026-11-08, RDM-web-one-footer)."""
+    return subprocess.run([sys.executable, str(APP_MENU_TOOL), "--site", "iflipbook.com", "--footer", path],
+                          capture_output=True, text=True, check=True).stdout.strip()
 
 
 def app_menu():
