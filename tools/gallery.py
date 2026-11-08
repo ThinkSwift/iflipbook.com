@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """gallery.py — iflipbook.com as a gallery of the drawings iFlipbook's pen makes (founder 2026-11-09, RDM-if-web-gallery).
 
-The home page is the collection: every approved library subject (accessories left out) on a quiet wall, grouped
-by room; each drawing has its own page with a free PNG download, so it can be found, saved and shared.
+The home page is the collection: every approved library subject (accessories left out) on a quiet wall, a dozen to a
+page, newest (highest number) first; each room has its own pages; each drawing has its own page with a free PNG
+download, so it can be found, saved and shared. Numbers are kept in gallery/numbers.json: a new drawing gets the next.
 Making a flipbook in the browser stays at /draw/, one quiet link from the home page.
 
     python3 tools/gallery.py --lib <iFlipbook>/iFlipbook/Helper/Library --renders <dir of <id>-after.png>
@@ -57,9 +58,20 @@ def load(lib):
             continue
         works.append({"id": d["id"], "name": title(d["name"]), "room": d.get("category", "object"),
                       "desc": d.get("description", "").strip()})
-    works.sort(key=lambda w: w["name"].lower())
-    for i, w in enumerate(works, 1):
-        w["no"] = f"{i:03d}"
+    # numbers are kept once given (gallery/numbers.json): a drawing added later gets the next number, and the wall
+    # shows the highest number first, so the newest hang first (founder 2026-11-09)
+    nf = os.path.join(ROOT, "gallery", "numbers.json")
+    nums = json.load(open(nf, encoding="utf-8")) if os.path.exists(nf) else {}
+    nxt = max(nums.values(), default=0) + 1
+    for w in sorted(works, key=lambda w: w["name"].lower()):
+        if w["id"] not in nums:
+            nums[w["id"]] = nxt
+            nxt += 1
+    os.makedirs(os.path.dirname(nf), exist_ok=True)
+    json.dump(dict(sorted(nums.items(), key=lambda kv: kv[1])), open(nf, "w", encoding="utf-8"), indent=0)
+    for w in works:
+        w["no"] = f"{nums[w['id']]:03d}"
+    works.sort(key=lambda w: -int(w["no"]))
     return works
 
 
@@ -140,20 +152,24 @@ HOME_CSS = """
     .cap .n{font-size:11px;letter-spacing:.12em;color:var(--faint);font-variant-numeric:tabular-nums}
     .rooms{position:sticky;top:0;z-index:5;background:rgba(244,242,237,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
       display:flex;gap:6px 22px;flex-wrap:wrap;align-items:baseline;padding:16px 0 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .rooms button{all:unset;cursor:pointer;font-size:13.5px;color:var(--soft);padding:2px 0;border-bottom:1.5px solid transparent}
-    .rooms button sup{font-size:10px;color:var(--faint);margin-left:3px}
-    .rooms button:hover{color:var(--ink)}
-    .rooms button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
-    .wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:44px 34px;padding:44px 0 20px}
+    .rooms a{font-size:13.5px;color:var(--soft);padding:2px 0;border-bottom:1.5px solid transparent;text-decoration:none}
+    .rooms a sup{font-size:10px;color:var(--faint);margin-left:3px}
+    .rooms a:hover{color:var(--ink)}
+    .rooms a[aria-current]{color:var(--ink);border-color:var(--ink)}
+    .hub-h{padding:64px 0 40px} .hub-h h1{font-weight:400;font-size:clamp(34px,4.4vw,52px);letter-spacing:-.015em;margin:14px 0 0}
+    /* room to breathe: three across at most, a wide wall gap, a dozen to a page (founder 2026-11-09) */
+    .wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:80px 72px;max-width:1040px;margin:0 auto;padding:72px 0 24px}
     .wall a{text-decoration:none;display:block}
-    .wall a[hidden]{display:none}
+    .pager{display:flex;justify-content:space-between;align-items:center;max-width:1040px;margin:56px auto 0;padding:22px 0;border-top:1px solid var(--line);font-size:14px;color:var(--faint)}
+    .pager a{color:var(--ink);text-decoration:none} .pager a:hover{text-decoration:underline;text-underline-offset:3px}
+    .pager .off{visibility:hidden}
     .aside{margin:52px 0 0;padding:26px 0 0;border-top:1px solid var(--line);color:var(--soft);font-size:14px;text-align:center}
     .aside a{color:var(--ink);text-underline-offset:3px}
-    @media (max-width:860px){.hero{grid-template-columns:1fr;gap:40px;padding:48px 0 44px}}
+    @media (max-width:860px){.hero{grid-template-columns:1fr;gap:40px;padding:48px 0 44px} .wall{gap:56px 40px}}
     @media (max-width:540px){
       .wrap{padding:0 16px}
       .tab{min-width:0;flex:1;padding:10px 6px 9px} .tabs{flex:1}
-      .wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 16px}
+      .wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 22px;padding:44px 0 16px}
       .trio{gap:14px} .cap .t{font-size:14px} .rooms{gap:6px 16px}
     }
 """
@@ -233,20 +249,58 @@ def head_common(title_, desc, url, image, extra=""):
 {extra}  {FONTS}"""
 
 
-def home(works, menu_head, menu, foot, keep):
-    by = {w["id"]: w for w in works}
+PER_PAGE = 12
+
+
+def hub_url(room, n):
+    """Page n of the whole wall ('' room) or of one room."""
+    base = "/" if not room else f"/gallery/room/{room}/"
+    if n == 1:
+        return base
+    return (f"/gallery/page/{n}/" if not room else f"{base}page/{n}/")
+
+
+def hub(works, all_works, room, n, pages, menu_head, menu, foot, keep):
+    """One page of the wall: the home is page 1 of all of them (with the hero); rooms have their own pages."""
+    by = {w["id"]: w for w in all_works}
     feat = [by[i] for i in FEATURED if i in by]
-    counts = {k: sum(1 for w in works if w["room"] == k) for k, _ in ROOMS}
-    rooms = '<button type="button" aria-pressed="true" data-room="">All<sup>' + str(len(works)) + "</sup></button>" + "".join(
-        f'<button type="button" aria-pressed="false" data-room="{k}">{n}<sup>{counts[k]}</sup></button>' for k, n in ROOMS if counts[k])
-    desc = (f"The iFlipbook collection: {len(works)} small drawings made with iFlipbook's pen, "
-            "from a bubble tea to a dragon. Every one is free to download, print and share.")
+    counts = {k: sum(1 for w in all_works if w["room"] == k) for k, _ in ROOMS}
+    cur = lambda k: ' aria-current="page"' if k == room else ""
+    rooms = f'<a href="/#wall"{cur("")}>All<sup>{len(all_works)}</sup></a>' + "".join(
+        f'<a href="/gallery/room/{k}/#wall"{cur(k)}>{nm}<sup>{counts[k]}</sup></a>' for k, nm in ROOMS if counts[k])
+    url = ORIGIN + hub_url(room, n)
+    home = not room and n == 1
+    if home:
+        title_ = "iFlipbook — The Collection: free drawings to download and share"
+        desc = (f"The iFlipbook collection: {len(all_works)} small drawings made with iFlipbook's pen, "
+                "from a bubble tea to a dragon. Every one is free to download, print and share.")
+        top = f"""<header class="hero">
+      <div>
+        <p class="eyebrow">The iFlipbook Collection</p>
+        <h1 class="serif">Small drawings,<br><em>one pen.</em></h1>
+        <p class="lede">{len(all_works)} drawings made with iFlipbook&rsquo;s pen. Every one is free to download, print and share.</p>
+        {store("web-if-home")}
+      </div>
+      <div class="trio">{"".join(card(w, lazy=False) for w in feat)}</div>
+    </header>"""
+    else:
+        label = ROOM_NAME[room] if room else "All drawings"
+        title_ = f"{label} — free drawings to download" + (f", page {n}" if n > 1 else "") + " · iFlipbook"
+        desc = (f"{label}: small drawings made with iFlipbook's pen, free to download, print and share."
+                + (f" Page {n} of {pages}." if pages > 1 else ""))
+        top = f"""<header class="hub-h"><p class="eyebrow">The iFlipbook Collection</p><h1 class="serif">{e(label)}</h1></header>"""
+    newer = f'<a href="{hub_url(room, n - 1)}#wall">&larr; Newer</a>' if n > 1 else '<span class="off">&larr; Newer</span>'
+    older = f'<a href="{hub_url(room, n + 1)}#wall">Older &rarr;</a>' if n < pages else '<span class="off">Older &rarr;</span>'
+    pager = f'<nav class="pager" aria-label="Pages">{newer}<span>{n} / {pages}</span>{older}</nav>' if pages > 1 else ""
+    rel = (f'  <link rel="prev" href="{ORIGIN}{hub_url(room, n - 1)}" />\n' if n > 1 else "") + \
+          (f'  <link rel="next" href="{ORIGIN}{hub_url(room, n + 1)}" />\n' if n < pages else "")
     ld = json.dumps({"@context": "https://schema.org", "@type": "CollectionPage", "name": "The iFlipbook Collection",
-                     "url": ORIGIN + "/", "description": desc, "publisher": {"@id": "https://swiftian.com/#org"},
+                     "url": url, "description": desc, "publisher": {"@id": "https://swiftian.com/#org"},
                      "hasPart": [{"@type": "ImageObject", "name": w["name"], "contentUrl": f"{ORIGIN}/gallery/img/{w['id']}.png",
-                                  "url": f"{ORIGIN}/gallery/{w['id']}/"} for w in feat]}, ensure_ascii=False)
-    return head_common("iFlipbook — The Collection: free drawings to download and share", desc, ORIGIN + "/",
-                       f"{ORIGIN}/gallery/img/{feat[0]['id']}.png", keep) + f"""
+                                  "url": f"{ORIGIN}/gallery/{w['id']}/"} for w in works]}, ensure_ascii=False)
+    aside = '<p class="aside">Want to see a drawing move? <a href="/draw/">Make a flipbook in your browser</a>.</p>' if home else ""
+    return head_common(title_, desc, url, f"{ORIGIN}/gallery/img/{(feat if home else works)[0]['id']}.png",
+                       (keep if home else "") + rel) + f"""
   {menu_head}
   <style>{CSS}{HOME_CSS}  </style>
   <script type="application/ld+json">{ld}</script>
@@ -255,41 +309,40 @@ def home(works, menu_head, menu, foot, keep):
   <div class="wrap">
     {menu}
     {tabs()}
-    <header class="hero">
-      <div>
-        <p class="eyebrow">The iFlipbook Collection</p>
-        <h1 class="serif">Small drawings,<br><em>one pen.</em></h1>
-        <p class="lede">{len(works)} drawings made with iFlipbook&rsquo;s pen. Every one is free to download, print and share.</p>
-        {store("web-if-home")}
-      </div>
-      <div class="trio">{"".join(card(w, lazy=False) for w in feat)}</div>
-    </header>
+    {top}
     <nav class="rooms" aria-label="Rooms">{rooms}</nav>
     <main class="wall" id="wall">{"".join(card(w) for w in works)}</main>
-    <p class="aside">Want to see a drawing move? <a href="/draw/">Make a flipbook in your browser</a>.</p>
+    {pager}
+    {aside}
   </div>
   {foot}
-  <script>
-  (function () {{   // rooms: show one category at a time, remembered in the address (#animal)
-    var bs = document.querySelectorAll(".rooms button"), ws = document.querySelectorAll(".wall a");
-    function show(r) {{
-      bs.forEach(function (b) {{ b.setAttribute("aria-pressed", String(b.dataset.room === r)); }});
-      ws.forEach(function (a) {{ a.hidden = !!r && a.dataset.room !== r; }});
-    }}
-    bs.forEach(function (b) {{ b.addEventListener("click", function () {{
-      show(b.dataset.room); history.replaceState(null, "", b.dataset.room ? "#" + b.dataset.room : location.pathname);
-      document.getElementById("wall").scrollIntoView({{block: "start"}});
-    }}); }});
-    var h = location.hash.slice(1); if (h && document.querySelector('.rooms button[data-room="' + h + '"]')) show(h);
-  }})();
-  </script>
   {TRACK}
 </body>
 </html>
 """
 
 
-def piece(w, prev, nxt, kin, menu_head, menu, foot):
+def write_hubs(works, menu_head, menu, foot, keep):
+    """Every page of the wall and of each room; returns {id: the All page it hangs on} for the back links."""
+    on_page = {}
+    for room in [""] + [k for k, _ in ROOMS]:
+        ws = [w for w in works if not room or w["room"] == room]
+        if not ws:
+            continue
+        pages = (len(ws) + PER_PAGE - 1) // PER_PAGE
+        for n in range(1, pages + 1):
+            chunk = ws[(n - 1) * PER_PAGE:n * PER_PAGE]
+            if not room:
+                for w in chunk:
+                    on_page[w["id"]] = hub_url("", n)
+            path = hub_url(room, n).strip("/")
+            out = os.path.join(ROOT, path, "index.html") if path else os.path.join(ROOT, "index.html")
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            open(out, "w", encoding="utf-8").write(hub(chunk, works, room, n, pages, menu_head, menu, foot, keep))
+    return on_page
+
+
+def piece(w, newer, older, kin, menu_head, menu, foot):
     url = f"{ORIGIN}/gallery/{w['id']}/"
     img = f"{ORIGIN}/gallery/img/{w['id']}.png"
     room = ROOM_NAME.get(w["room"], "Things")
@@ -309,7 +362,7 @@ def piece(w, prev, nxt, kin, menu_head, menu, foot):
   <div class="wrap">
     {menu}
     {tabs()}
-    <a class="back" href="/#{w['room']}">&larr; The Collection &middot; {room}</a>
+    <a class="back" href="/gallery/room/{w['room']}/">&larr; The Collection &middot; {room}</a>
     <article class="piece">
       <figure class="frame"><img src="/gallery/img/{w['id']}.png" width="{w['px']}" height="{w['px']}" alt="{e(w['desc'] or w['name'])}"></figure>
       <div class="placard">
@@ -324,8 +377,8 @@ def piece(w, prev, nxt, kin, menu_head, menu, foot):
       </div>
     </article>
     <nav class="pn" aria-label="More drawings">
-      <a href="/gallery/{prev['id']}/">&larr; <span class="t">{e(prev['name'])}</span></a>
-      <a href="/gallery/{nxt['id']}/"><span class="t">{e(nxt['name'])}</span> &rarr;</a>
+      {f'<a href="/gallery/{newer["id"]}/">&larr; <span class="t">{e(newer["name"])}</span></a>' if newer else '<span></span>'}
+      {f'<a href="/gallery/{older["id"]}/"><span class="t">{e(older["name"])}</span> &rarr;</a>' if older else '<span></span>'}
     </nav>
     <section class="kin"><h2>Also in {room}</h2><div class="row">{kin_html}</div></section>
   </div>
@@ -355,6 +408,8 @@ def sitemap(works):
     add = "".join(f"\n  <url>\n    <loc>{ORIGIN}/gallery/{w['id']}/</loc>\n    <changefreq>monthly</changefreq>\n"
                   f"    <priority>0.6</priority>\n    <image:image><image:loc>{ORIGIN}/gallery/img/{w['id']}.png</image:loc></image:image>\n  </url>"
                   for w in works)
+    add += "".join(f"\n  <url>\n    <loc>{ORIGIN}/gallery/room/{k}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>"
+                   for k, _ in ROOMS if any(w["room"] == k for w in works))
     s = s.replace("\n</urlset>", add + "\n</urlset>", 1)
     open(p, "w", encoding="utf-8").write(s)
 
@@ -375,18 +430,21 @@ def main():
         w["px"] = trim(os.path.join(renders, f"{w['id']}-after.png"), os.path.join(img_dir, f"{w['id']}.png"))
     for i, w in enumerate(works):
         same = [k for k in works if k["room"] == w["room"] and k["id"] != w["id"]]
-        start = same.index(next((k for k in same if k["name"] > w["name"]), same[0])) if same else 0
+        start = same.index(next((k for k in same if int(k["no"]) < int(w["no"])), same[0])) if same else 0
         kin = (same[start:] + same[:start])[:4]
         d = os.path.join(ROOT, "gallery", w["id"])
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(
-            piece(w, works[i - 1], works[(i + 1) % len(works)], kin, menu_head, menu, foot))
-    open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(home(works, menu_head, menu, foot, keep))
+            piece(w, works[i - 1] if i else None, works[i + 1] if i + 1 < len(works) else None, kin, menu_head, menu, foot))
+    # old page folders from an earlier run go first, so a shrinking room leaves no stale page behind
+    for d in ("page", "room"):
+        shutil.rmtree(os.path.join(ROOT, "gallery", d), ignore_errors=True)
+    write_hubs(works, menu_head, menu, foot, keep)
     sitemap(works)
     # the drawings this site shows, for other tools (Pinterest pins link to /gallery/<id>/)
     json.dump([{k: w[k] for k in ("id", "no", "name", "room", "desc")} for w in works],
               open(os.path.join(ROOT, "gallery", "items.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
-    print(f"gallery: {len(works)}/{len(works)} drawings · home · {len(works)} pages · sitemap")
+    print(f"gallery: {len(works)}/{len(works)} drawings · {len(works)} drawing pages · wall in pages of {PER_PAGE} · sitemap")
 
 
 if __name__ == "__main__":
