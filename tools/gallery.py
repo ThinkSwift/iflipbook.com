@@ -29,6 +29,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ORIGIN = "https://iflipbook.com"
 APP_MENU = os.path.expanduser("~/Projects/swiftian.com/tools/app_menu.py")
 STORE = "https://apps.apple.com/app/id6759637879"
+SITE_LD = {"@context": "https://schema.org", "@graph": [   # home only: same shape as the other five sites
+    {"@type": "WebSite", "@id": f"{ORIGIN}/#site", "name": "iFlipbook", "alternateName": ["iflipbook.com", "iFlipbook: Flip Book Animator"],
+     "url": f"{ORIGIN}/", "publisher": {"@id": "https://swiftian.com/#org"}},
+    {"@type": "SoftwareApplication", "name": "iFlipbook", "alternateName": "iFlipbook: Flip Book Animator", "url": STORE,
+     "sameAs": [f"{ORIGIN}/", "https://www.pinterest.com/iflipbook/"], "image": f"{ORIGIN}/apple-touch-icon.png",
+     "operatingSystem": "iOS, iPadOS, macOS", "applicationCategory": "DesignApplication",
+     "description": "Draw a flipbook frame by frame and watch it move.", "author": {"@id": "https://swiftian.com/#org"}},
+    {"@type": "Organization", "@id": "https://swiftian.com/#org", "name": "Swiftian Inc.", "url": "https://swiftian.com/",
+     "logo": "https://swiftian.com/apple-touch-icon.png",
+     "sameAs": ["https://pythoneer.io/", "https://spriteer.com/", "https://iflipbook.com/", "https://coordigo.com/"]}]}
 ROOMS = [("animal", "Animals"), ("food", "Food"), ("nature", "Nature"), ("object", "Things"),
          ("fantasy", "Fantasy"), ("holiday", "Holidays"), ("vehicle", "Vehicles")]
 FEATURED = ["dragon", "bubble-tea", "lighthouse"]
@@ -298,6 +308,8 @@ def hub(works, all_works, room, n, pages, menu_head, menu, foot, keep):
                      "url": url, "description": desc, "publisher": {"@id": "https://swiftian.com/#org"},
                      "hasPart": [{"@type": "ImageObject", "name": w["name"], "contentUrl": f"{ORIGIN}/gallery/img/{w['id']}.png",
                                   "url": f"{ORIGIN}/gallery/{w['id']}/"} for w in works]}, ensure_ascii=False)
+    if home:   # the site's name and its app for Google (site name, brand search); the gallery rebuild had dropped them
+        ld += '</script>\n  <script type="application/ld+json">' + json.dumps(SITE_LD, ensure_ascii=False)
     aside = '<p class="aside">Want to see a drawing move? <a href="/draw/">Make a flipbook in your browser</a>.</p>' if home else ""
     return head_common(title_, desc, url, f"{ORIGIN}/gallery/img/{(feat if home else works)[0]['id']}.png",
                        (keep if home else "") + rel) + f"""
