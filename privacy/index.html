@@ -71,18 +71,18 @@
 
   <main class="container">
     <h1>Privacy Policy</h1>
-    <p class="eff">Effective October 2026 (iFlipbook 3.1) · iFlipbook is made by Swiftian Inc.</p>
+    <p class="eff">Effective November 2026 (iFlipbook 3.2) · iFlipbook is made by Swiftian Inc.</p>
 
     <p class="lede">
-      iFlipbook works without an account. Your drawings, characters, and postcards live on
-      your device. The only things that leave it are a message you choose to send us, anonymous
-      usage events, and crash reports. We don't sell your data, we don't run ads, and we
+      iFlipbook works without an account. Your drawings and characters live on
+      your device and in your own iCloud. The only things that leave them are a message you choose
+      to send us, what you ask the drawing helper for, anonymous usage events, and crash reports. We don't sell your data, we don't run ads, and we
       don't embed cross-app tracking.
     </p>
 
     <h2>What stays on your device</h2>
     <p>
-      Your flipbooks, frames, drawings, characters, postcards, palettes, and settings are
+      Your flipbooks, pages, drawings, characters, palettes, and settings are
       stored in the app's own storage on your device, and — if you are signed in to iCloud —
       in your own iCloud, so your other devices have them too. We have no copy of them. Deleting the
       app deletes them, so export anything you want to keep. Photos you pick to trace stay on
@@ -103,8 +103,13 @@
         </tr>
         <tr>
           <td>Simply open the app</td>
-          <td>An anonymous install ID with the features you use and when (for example "added a page", "finished the first lesson"), plus app version, build, OS version, and language; and counts of sessions and feature uses by day. The app also asks our server, with the same ID, whether we have replied to your feedback. Never your drawings or words.</td>
-          <td>Our proxy server; Apple's CloudKit</td>
+          <td>An anonymous install ID with the features you use and when (for example "added a page", "finished the first lesson"), plus app version, build, OS version, and language. The app also asks our server, with the same ID, whether we have replied to your feedback. Never your drawings or words.</td>
+          <td>Our proxy server</td>
+        </tr>
+        <tr>
+          <td>Ask the drawing helper for an idea (iPhone, iPad, Mac, Apple Watch)</td>
+          <td>The request and your anonymous install ID go to our server. If you type or say what to draw, those words go from our server to Anthropic's Claude AI to make the drawing — the app asks you first, and with Not Now nothing is sent. "I'm feeling lucky" and the suggested ideas send no words. We don't keep your words; our server keeps only how many drawings your device got today and which ideas it was already given. Your own drawings are never sent.</td>
+          <td>Our proxy server; Anthropic (typed or spoken words only)</td>
         </tr>
         <tr>
           <td>The app crashes, freezes, or runs slowly</td>
@@ -113,7 +118,7 @@
         </tr>
         <tr>
           <td>Sign in to iCloud on your devices</td>
-          <td>Your flipbooks, characters and cards, copied to your own iCloud so every iPhone, iPad and Mac you sign in to has the same library — we can't see it</td>
+          <td>Your flipbooks and characters, copied to your own iCloud so every iPhone, iPad, Mac and Apple Watch you sign in to has the same library — we can't see it</td>
           <td>Your iCloud (Apple)</td>
         </tr>
         <tr>
@@ -123,7 +128,7 @@
         </tr>
         <tr>
           <td>Buy something</td>
-          <td>Handled entirely by Apple — we never see your payment details</td>
+          <td>Handled entirely by Apple — we never see your payment details. With Pro + Helper, the app shows our server Apple's signed proof of the subscription with each helper request; we check it and don't store it.</td>
           <td>Apple</td>
         </tr>
       </tbody>
@@ -156,15 +161,17 @@
 
     <h2>Who processes data for us</h2>
     <ul>
-      <li><strong>Apple</strong> — CloudKit stores the daily usage counts; the App Store handles purchases.</li>
-      <li><strong>Cloudflare</strong> — runs the small proxy server that feedback messages, usage events, and crash reports pass through, and stores the events and reports.</li>
+      <li><strong>Apple</strong> — iCloud holds your own library; the App Store handles purchases.</li>
+      <li><strong>Anthropic</strong> — its Claude AI turns the words you type or say to the drawing helper into a drawing. It receives those words only, with nothing that identifies you.</li>
+      <li><strong>Cloudflare</strong> — runs the small proxy server that feedback messages, helper requests, usage events, and crash reports pass through, and stores the events and reports.</li>
     </ul>
     <p>These providers process data on our behalf. We do not sell or rent data to anyone.</p>
 
     <h2>How long things are kept</h2>
     <ul>
       <li><strong>Feedback messages</strong> — kept while the conversation is useful, then removed.</li>
-      <li><strong>Usage events and counts</strong> — kept to understand which features people actually use; events are deleted after about three months.</li>
+      <li><strong>Helper requests</strong> — your words are not kept. The day's count and the list of ideas already given stay with your anonymous ID.</li>
+      <li><strong>Usage events</strong> — kept to understand which features people actually use; events are deleted after about three months.</li>
       <li><strong>Crash reports</strong> — kept until the problem is fixed, then removed.</li>
     </ul>
 
