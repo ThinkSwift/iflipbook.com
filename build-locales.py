@@ -278,8 +278,7 @@ def relayout_nav(path):
 
 def relayout(page, path, menu):
     head, block = menu
-    page = re.sub(r'<header class="nav">.*?</header>', lambda _m: '<div class="container">' + relayout_nav(path) + '</div>', page, count=1, flags=re.S)
-    page = re.sub(r'<body([^>]*)>\n?', lambda m: f'<body{m.group(1)}>\n' + block + '\n', page, count=1)   # the Swiftian bar, full width at the top
+    page = re.sub(r'<header class="nav">.*?</header>', lambda _m: '<div class="container">' + block + relayout_nav(path) + '</div>', page, count=1, flags=re.S)
     i = page.index("</style>")
     page = page[:i] + RELAYOUT_CSS + page[i:]
     return page.replace("</head>", head + "</head>", 1)

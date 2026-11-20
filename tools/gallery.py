@@ -318,8 +318,8 @@ def hub(works, all_works, room, n, pages, menu_head, menu, foot, keep):
   <script type="application/ld+json">{ld}</script>
 </head>
 <body>
-{menu}
   <div class="wrap">
+    {menu}
     {tabs()}
     {top}
     <nav class="rooms" aria-label="Rooms">{rooms}</nav>
@@ -371,8 +371,8 @@ def piece(w, newer, older, kin, menu_head, menu, foot):
   <script type="application/ld+json">{ld}</script>
 </head>
 <body>
-{menu}
   <div class="wrap">
+    {menu}
     {tabs()}
     <a class="back" href="/gallery/room/{w['room']}/">&larr; The Collection &middot; {room}</a>
     <article class="piece">
